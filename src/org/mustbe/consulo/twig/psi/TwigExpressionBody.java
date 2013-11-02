@@ -17,35 +17,22 @@
 package org.mustbe.consulo.twig.psi;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigBlock extends TwigElement
+public class TwigExpressionBody extends TwigElement
 {
-	public TwigBlock(@NotNull ASTNode node)
+	public TwigExpressionBody(@NotNull ASTNode node)
 	{
 		super(node);
-	}
-
-	@NotNull
-	public TwigTag getOpenTag()
-	{
-		return (TwigTag) findNotNullChildByType(TwigElements.OPEN_TAG);
-	}
-
-	@Nullable
-	public TwigTag getCloseTag()
-	{
-		return (TwigTag) findChildByType(TwigElements.CLOSE_TAG);
 	}
 
 	@Override
 	public void accept(@NotNull TwigVisitor visitor)
 	{
-		visitor.visitBlock(this);
+		visitor.visitExpressionBody(this);
 	}
 }

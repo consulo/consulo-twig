@@ -27,7 +27,16 @@ import com.intellij.psi.tree.IElementTypeAsPsiFactory;
 public interface TwigElements
 {
 	IElementType OPEN_TAG = new IElementTypeAsPsiFactory("OPEN_TAG", TwigLanguage.INSTANCE, TwigTag.class);
+
 	IElementType CLOSE_TAG = new IElementTypeAsPsiFactory("CLOSE_TAG", TwigLanguage.INSTANCE, TwigTag.class);
 
 	IElementType BLOCK = new IElementTypeAsPsiFactory("BLOCK", TwigLanguage.INSTANCE, TwigBlock.class);
+
+	IElementType EXPRESSION_BODY = new IElementTypeAsPsiFactory("EXPRESSION_BODY", TwigLanguage.INSTANCE, TwigExpressionBody.class);
+
+	IElementType CONSTANT_EXPRESSION = new IElementTypeAsPsiFactory("CONSTANT_EXPRESSION", TwigLanguage.INSTANCE, TwigConstantExpression.class);
+
+	IElementType REFERENCE_EXPRESSION = new IElementTypeAsPsiFactory("REFERENCE_EXPRESSION", TwigLanguage.INSTANCE, TwigReferenceExpression.class);
+
+	IElementType BINARY_EXPRESSION = new IElementTypeAsPsiFactory("BINARY_EXPRESSION", TwigLanguage.INSTANCE, TwigBinaryExpression.class);
 }

@@ -19,11 +19,9 @@ package org.mustbe.consulo.twig.psi;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiNameIdentifierOwner;
 import com.intellij.util.IncorrectOperationException;
 
@@ -31,7 +29,7 @@ import com.intellij.util.IncorrectOperationException;
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigTag extends ASTWrapperPsiElement  implements PsiNameIdentifierOwner
+public class TwigTag extends TwigElement implements PsiNameIdentifierOwner
 {
 	public TwigTag(@NotNull ASTNode node)
 	{
@@ -39,16 +37,9 @@ public class TwigTag extends ASTWrapperPsiElement  implements PsiNameIdentifierO
 	}
 
 	@Override
-	public void accept(@NotNull PsiElementVisitor visitor)
+	public void accept(@NotNull TwigVisitor visitor)
 	{
-		if(visitor instanceof TwigVisitor)
-		{
-			((TwigVisitor) visitor).visitTag(this);
-		}
-		else
-		{
-			super.accept(visitor);
-		}
+		visitor.visitTag(this);
 	}
 
 	public String getOpenedTagName()
@@ -77,7 +68,7 @@ public class TwigTag extends ASTWrapperPsiElement  implements PsiNameIdentifierO
 	@Override
 	public PsiElement getNameIdentifier()
 	{
-		return findNotNullChildByType(TwigTokens.T_BLOCK_NAME);
+		return findNotNullChildByType(TwigTokens.BLOCK_NAME);
 	}
 
 	@Override

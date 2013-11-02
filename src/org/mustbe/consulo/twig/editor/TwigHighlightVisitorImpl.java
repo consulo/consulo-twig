@@ -19,6 +19,7 @@ package org.mustbe.consulo.twig.editor;
 import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.twig.highlight.TwigSyntaxHighlighterKeys;
 import org.mustbe.consulo.twig.psi.TwigBlock;
+import org.mustbe.consulo.twig.psi.TwigExpressionBody;
 import org.mustbe.consulo.twig.psi.TwigFile;
 import org.mustbe.consulo.twig.psi.TwigTag;
 import org.mustbe.consulo.twig.psi.TwigVisitor;
@@ -64,6 +65,14 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 		super.visitTag(tag);
 
 		myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION).range(tag).textAttributes(TwigSyntaxHighlighterKeys.TAG).create());
+	}
+
+	@Override
+	public void visitExpressionBody(TwigExpressionBody twigExpression)
+	{
+		super.visitExpressionBody(twigExpression);
+
+		myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION).range(twigExpression).textAttributes(TwigSyntaxHighlighterKeys.TAG).create());
 	}
 
 	@Override

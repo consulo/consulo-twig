@@ -59,7 +59,7 @@ public class TwigCompletionProvider extends CompletionContributor
 
 	public TwigCompletionProvider()
 	{
-		extend(CompletionType.BASIC, StandardPatterns.psiElement(TwigTokens.T_BLOCK_NAME), new CompletionProvider<CompletionParameters>()
+		extend(CompletionType.BASIC, StandardPatterns.psiElement(TwigTokens.BLOCK_NAME), new CompletionProvider<CompletionParameters>()
 		{
 			@Override
 			protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet)

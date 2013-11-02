@@ -50,6 +50,16 @@ public class TwigParsingTest extends ParsingTestCase
 		doTest(true);
 	}
 
+	public void testComments()
+	{
+		doTest(true);
+	}
+
+	public void testExpressionBody()
+	{
+		doTest(true);
+	}
+
 	public void testBlockParsingWithoutName()
 	{
 		doTest(true);

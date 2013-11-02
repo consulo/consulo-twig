@@ -84,7 +84,7 @@ public class TwigParserDefinition implements ParserDefinition
 	@Override
 	public TokenSet getStringLiteralElements(@NotNull LanguageVersion languageVersion)
 	{
-		return TokenSet.EMPTY;
+		return TokenSet.create(TwigTokens.STRING, TwigTokens.DSTRING);
 	}
 
 	@NotNull

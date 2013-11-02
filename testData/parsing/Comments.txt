@@ -1,0 +1,4 @@
+TWIG_FILE_ELEMENT_TYPE
+  PsiElement(COMMENT)('{# line comment #}')
+  PsiElement(T_INLINE_HTML)('\n')
+  PsiElement(COMMENT)('{# multiline\n  comment #}')

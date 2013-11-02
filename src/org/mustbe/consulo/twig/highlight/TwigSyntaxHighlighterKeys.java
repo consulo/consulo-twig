@@ -31,4 +31,6 @@ public interface TwigSyntaxHighlighterKeys
 	TextAttributesKey TAG = TextAttributesKey.createTextAttributesKey(TwigLanguage.INSTANCE, DefaultLanguageHighlighterColors.MARKUP_TAG);
 
 	TextAttributesKey KEYWORD = TextAttributesKey.createTextAttributesKey(TwigLanguage.INSTANCE, DefaultLanguageHighlighterColors.KEYWORD);
+
+	TextAttributesKey STRING = TextAttributesKey.createTextAttributesKey(TwigLanguage.INSTANCE, DefaultLanguageHighlighterColors.STRING);
 }

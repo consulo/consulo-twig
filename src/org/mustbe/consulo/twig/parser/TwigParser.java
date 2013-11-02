@@ -86,8 +86,87 @@ public class TwigParser implements PsiParser, TwigTokens, TwigElements
 			{
 				parseTag(builder, tags);
 			}
+			else if(tokenType == VAR_OPEN)
+			{
+				parseExpression(builder);
+			}
+			else
+			{
+				builder.advanceLexer();
+			}
+		}
+	}
+
+	private void parseExpression(PsiBuilder builder)
+	{
+		PsiBuilder.Marker marker = builder.mark();
+
+		builder.advanceLexer();
+
+		PsiBuilder.Marker expressionMarker = parseBigExpression(builder);
+		if(expressionMarker == null)
+		{
+			builder.error("Expression expected");
+		}
+
+		if(builder.getTokenType() == VAR_CLOSE)
+		{
 			builder.advanceLexer();
 		}
+		else
+		{
+			builder.error("}} expected");
+		}
+
+		marker.done(EXPRESSION_BODY);
+	}
+
+	private PsiBuilder.Marker parseSingleExpression(PsiBuilder builder)
+	{
+		PsiBuilder.Marker marker = builder.mark();
+		IElementType tokenType = builder.getTokenType();
+		if(tokenType == IDENTIFIER)
+		{
+			builder.advanceLexer();
+			marker.done(REFERENCE_EXPRESSION);
+		}
+		else if(tokenType == STRING || tokenType == DSTRING)
+		{
+			builder.advanceLexer();
+			marker.done(CONSTANT_EXPRESSION);
+		}
+		else
+		{
+			marker.drop();
+			marker = null;
+		}
+		return marker;
+	}
+
+	private PsiBuilder.Marker parseBigExpression(PsiBuilder builder)
+	{
+		PsiBuilder.Marker marker = parseSingleExpression(builder);
+		if(marker == null)
+		{
+			return null;
+		}
+
+		IElementType tokenType = builder.getTokenType();
+		if(tokenType == OR || tokenType == IS_KEYWORD || tokenType == IN_KEYWORD)
+		{
+			marker = marker.precede();
+
+			builder.advanceLexer();
+
+			PsiBuilder.Marker expMarker = parseSingleExpression(builder);
+			if(expMarker == null)
+			{
+				builder.error("Expression expected");
+			}
+
+			marker.done(BINARY_EXPRESSION);
+		}
+		return marker;
 	}
 
 	private void parseTag(PsiBuilder builder, Deque<Pair<PsiBuilder.Marker, String>> tags)
@@ -97,18 +176,20 @@ public class TwigParser implements PsiParser, TwigTokens, TwigElements
 		builder.advanceLexer();
 
 		Pair<Boolean, String> tagInfo = tagInfo(null);
-
-		Pair<PsiBuilder.Marker, String> lastTag = tags.peekLast();
-
-		while(!builder.eof() && builder.getTokenType() != STMT_CLOSE)
+		if(builder.getTokenType() != BLOCK_NAME)
 		{
-			if(builder.getTokenType() == T_BLOCK_NAME)
-			{
-				tagInfo = tagInfo(builder.getTokenText());
-			}
+			builder.error("Tag name expected");
+		}
+		else
+		{
+			tagInfo = tagInfo(builder.getTokenText());
 
 			builder.advanceLexer();
+
+			parseBigExpression(builder);
 		}
+
+		Pair<PsiBuilder.Marker, String> lastTag = tags.peekLast();
 
 		if(tagInfo.getSecond() == null)
 		{

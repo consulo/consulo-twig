@@ -38,15 +38,23 @@ public interface TwigTokens extends TokenType
 
 	IElementType COMMENT = new IElementType("COMMENT", TwigLanguage.INSTANCE);
 
-	IElementType T_BLOCK_NAME = new IElementType("T_BLOCK_NAME", TwigLanguage.INSTANCE);
+	IElementType BLOCK_NAME = new IElementType("BLOCK_NAME", TwigLanguage.INSTANCE);
 
-	IElementType T_VARIABLE = new IElementType("T_VARIABLE", TwigLanguage.INSTANCE);
+	IElementType IDENTIFIER = new IElementType("IDENTIFIER", TwigLanguage.INSTANCE);
+
+	IElementType T_INLINE_HTML = new IElementType("T_INLINE_HTML", TwigLanguage.INSTANCE);
+
+	IElementType STRING = new IElementType("STRING", TwigLanguage.INSTANCE);
+
+	IElementType DSTRING = new IElementType("DSTRING", TwigLanguage.INSTANCE);
 
 	IElementType LPAR = new IElementType("LPAR", TwigLanguage.INSTANCE);
 
 	IElementType RPAR = new IElementType("RPAR", TwigLanguage.INSTANCE);
 
-	IElementType T_INLINE_HTML = new IElementType("T_INLINE_HTML", TwigLanguage.INSTANCE);
+	IElementType OR = new IElementType("OR", TwigLanguage.INSTANCE);
 
-	IElementType T_CONSTANT_ENCAPSED_STRING = new IElementType("T_CONSTANT_ENCAPSED_STRING", TwigLanguage.INSTANCE);
+	IElementType IN_KEYWORD = new IElementType("IN_KEYWORD", TwigLanguage.INSTANCE);
+
+	IElementType IS_KEYWORD = new IElementType("IS_KEYWORD", TwigLanguage.INSTANCE);
 }

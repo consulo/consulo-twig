@@ -23,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.twig.lexer.TwigLexer;
 import org.mustbe.consulo.twig.psi.TwigTokens;
 import com.intellij.lexer.Lexer;
+import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
@@ -37,7 +38,12 @@ public class TwigSyntaxHighlighter extends SyntaxHighlighterBase
 	{
 		{
 			put(TwigTokens.COMMENT, TwigSyntaxHighlighterKeys.COMMENT);
-			put(TwigTokens.T_BLOCK_NAME, TwigSyntaxHighlighterKeys.KEYWORD);
+			put(TwigTokens.BLOCK_NAME, TwigSyntaxHighlighterKeys.KEYWORD);
+			put(TwigTokens.IS_KEYWORD, TwigSyntaxHighlighterKeys.KEYWORD);
+			put(TwigTokens.IN_KEYWORD, TwigSyntaxHighlighterKeys.KEYWORD);
+			put(TwigTokens.BAD_CHARACTER, HighlighterColors.BAD_CHARACTER);
+			put(TwigTokens.STRING, TwigSyntaxHighlighterKeys.STRING);
+			put(TwigTokens.DSTRING, TwigSyntaxHighlighterKeys.STRING);
 		}
 	};
 

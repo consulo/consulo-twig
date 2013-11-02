@@ -3,15 +3,16 @@ TWIG_FILE_ELEMENT_TYPE
     TwigTag(OPEN_TAG)
       PsiElement(STMT_OPEN)('{%')
       PsiWhiteSpace(' ')
-      PsiElement(T_BLOCK_NAME)('block')
+      PsiElement(BLOCK_NAME)('block')
       PsiWhiteSpace(' ')
-      PsiElement(T_VARIABLE)('footer')
+      TwigReferenceExpression(REFERENCE_EXPRESSION)
+        PsiElement(IDENTIFIER)('footer')
       PsiWhiteSpace(' ')
       PsiElement(STMT_CLOSE)('%}')
     PsiElement(T_INLINE_HTML)('\n\n')
     TwigTag(OPEN_TAG)
       PsiElement(STMT_OPEN)('{%')
-      PsiErrorElement:Name expected
+      PsiErrorElement:Tag name expected
         <empty list>
       PsiWhiteSpace(' ')
       PsiElement(STMT_CLOSE)('%}')
