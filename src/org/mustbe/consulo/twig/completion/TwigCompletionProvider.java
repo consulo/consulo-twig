@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.twig.psi.TwigBlock;
 import org.mustbe.consulo.twig.psi.TwigElements;
 import org.mustbe.consulo.twig.psi.TwigTokens;
+import org.mustbe.consulo.twig.table.TwigTable;
+import org.mustbe.consulo.twig.table.TwigTableBlock;
 import com.intellij.codeInsight.completion.CompletionContributor;
 import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionProvider;
@@ -36,27 +38,6 @@ import com.intellij.util.ProcessingContext;
  */
 public class TwigCompletionProvider extends CompletionContributor
 {
-	private static final String[] ourTags = new String[]{
-			"autoescape",
-			"block",
-			"do",
-			"embed",
-			"extends",
-			"filter",
-			"flush",
-			"for",
-			"from",
-			"if",
-			"import",
-			"include",
-			"macro",
-			"sandbox",
-			"set",
-			"spaceless",
-			"use",
-			"verbatim"
-	};
-
 	public TwigCompletionProvider()
 	{
 		extend(CompletionType.BASIC, StandardPatterns.psiElement(TwigTokens.BLOCK_NAME), new CompletionProvider<CompletionParameters>()
@@ -72,9 +53,9 @@ public class TwigCompletionProvider extends CompletionContributor
 					completionResultSet.addElement(LookupElementBuilder.create("end" + parent.getOpenTag().getOpenedTagName()).withBoldness(true));
 				}
 
-				for(String ourTag : ourTags)
+				for(TwigTableBlock block : TwigTable.INSTANCE.getBlocks())
 				{
-					completionResultSet.addElement(LookupElementBuilder.create(ourTag).withBoldness(true));
+					completionResultSet.addElement(LookupElementBuilder.create(block.getName()).withBoldness(true));
 				}
 			}
 		});

@@ -97,7 +97,7 @@ NEWLINE=("\r"|"\n"|"\r\n")
 
     {WHITESPACE} { return TwigTokens.WHITE_SPACE; }
 
-    {ANY_CHAR}   { return TwigTokens.BAD_CHARACTER; }
+    .            { return TwigTokens.BAD_CHARACTER; }
 }
 
 <ST_TWIG_COMMENT>
@@ -123,7 +123,13 @@ NEWLINE=("\r"|"\n"|"\r\n")
         return TwigTokens.STMT_CLOSE;
     }
 
-    {WHITESPACE}  { return TwigTokens.WHITE_SPACE; }
+    {WHITESPACE}  {return TwigTokens.WHITE_SPACE;}
+
+    .
+    {
+    	yybegin(YYINITIAL);
+    	yypushback(1);
+    }
 }
 
 <ST_EXPRESSION_EXPRESSION, ST_BLOCK_EXPRESSION>
@@ -136,6 +142,14 @@ NEWLINE=("\r"|"\n"|"\r\n")
 
     "is"         { return TwigTokens.IS_KEYWORD; }
 
+    "="          { return TwigTokens.EQ; }
+
+    "%"          { return TwigTokens.PERC; }
+
+    "+"          { return TwigTokens.PLUS; }
+
+    "-"          { return TwigTokens.MINUS; }
+
     {IDENTIFIER} {return TwigTokens.IDENTIFIER; }
 
     "("          { return TwigTokens.LPAR; }
@@ -146,7 +160,7 @@ NEWLINE=("\r"|"\n"|"\r\n")
 
     {WHITESPACE} { return TwigTokens.WHITE_SPACE; }
 
-    {ANY_CHAR}   { return TwigTokens.BAD_CHARACTER; }
+    .            { return TwigTokens.BAD_CHARACTER; }
 }
 
 <ST_BLOCK_EXPRESSION>

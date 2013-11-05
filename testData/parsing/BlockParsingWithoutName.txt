@@ -1,16 +1,16 @@
 TWIG_FILE_ELEMENT_TYPE
-  TwigBlock(BLOCK)
-    TwigTag(OPEN_TAG)
+  TwigBlockImpl(BLOCK)
+    TwigTagImpl(OPEN_TAG)
       PsiElement(STMT_OPEN)('{%')
       PsiWhiteSpace(' ')
       PsiElement(BLOCK_NAME)('block')
       PsiWhiteSpace(' ')
-      TwigReferenceExpression(REFERENCE_EXPRESSION)
+      TwigReferenceExpressionImpl(REFERENCE_EXPRESSION)
         PsiElement(IDENTIFIER)('footer')
       PsiWhiteSpace(' ')
       PsiElement(STMT_CLOSE)('%}')
     PsiElement(T_INLINE_HTML)('\n\n')
-    TwigTag(OPEN_TAG)
+    TwigTagImpl(OPEN_TAG)
       PsiElement(STMT_OPEN)('{%')
       PsiErrorElement:Tag name expected
         <empty list>

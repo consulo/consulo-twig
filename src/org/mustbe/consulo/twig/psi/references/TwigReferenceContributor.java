@@ -133,6 +133,12 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 			{
 				return true;
 			}
+
+			// {% set a = 1 %}
+			if(tokenType == TwigTokens.EQ && ((TwigBinaryExpression) parent).getLeftElement() == expression)
+			{
+				return true;
+			}
 		}
 		return false;
 	}
@@ -151,7 +157,8 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 					return PsiReference.EMPTY_ARRAY;
 				}
 
-				return new PsiReference[]{
+				return new PsiReference[]
+				{
 						new PsiPolyVariantReferenceBase<TwigElement>((TwigElement) element)
 						{
 							@NotNull

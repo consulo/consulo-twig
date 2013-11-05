@@ -55,9 +55,17 @@ public interface TwigTokens extends TokenType
 
 	IElementType OR = new IElementType("OR", TwigLanguage.INSTANCE);
 
+	IElementType PERC = new IElementType("PERC", TwigLanguage.INSTANCE);
+
+	IElementType PLUS = new IElementType("PLUS", TwigLanguage.INSTANCE);
+
+	IElementType MINUS = new IElementType("MINUS", TwigLanguage.INSTANCE);
+
+	IElementType EQ = new IElementType("EQ", TwigLanguage.INSTANCE);
+
 	IElementType IN_KEYWORD = new IElementType("IN_KEYWORD", TwigLanguage.INSTANCE);
 
 	IElementType IS_KEYWORD = new IElementType("IS_KEYWORD", TwigLanguage.INSTANCE);
 
-	TokenSet BINARY_TOKENS = TokenSet.create(IN_KEYWORD, IS_KEYWORD, OR);
+	TokenSet BINARY_TOKENS = TokenSet.create(IN_KEYWORD, IS_KEYWORD, OR, EQ, PERC, PLUS, MINUS);
 }

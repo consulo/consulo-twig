@@ -25,6 +25,8 @@ import org.mustbe.consulo.twig.psi.TwigReferenceExpression;
 import org.mustbe.consulo.twig.psi.TwigTag;
 import org.mustbe.consulo.twig.psi.TwigVisitor;
 import org.mustbe.consulo.twig.psi.references.TwigReferenceContributor;
+import org.mustbe.consulo.twig.table.TwigTable;
+import org.mustbe.consulo.twig.table.TwigTableBlock;
 import com.intellij.codeInsight.daemon.impl.HighlightInfo;
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType;
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
@@ -118,15 +120,29 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 
 		TwigTag openTag = block.getOpenTag();
 		TwigTag closeTag = block.getCloseTag();
-		if(closeTag == null)
-		{
-			myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).descriptionAndTooltip("Tag is not closed").range(openTag).create());
-			return;
-		}
 
-		if(!Comparing.equal(openTag.getOpenedTagName(), closeTag.getOpenedTagName()))
+		TwigTableBlock tableBlock = TwigTable.INSTANCE.getBlock(openTag.getName());
+		if(tableBlock == null)
 		{
-			myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).descriptionAndTooltip("Wrong close tag name").range(closeTag.getNameIdentifier()).create());
+			myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.WRONG_REF).descriptionAndTooltip("Unknown tag").range(openTag.getNameIdentifier()).create());
+
+			if(closeTag != null && Comparing.equal(openTag.getOpenedTagName(), closeTag.getOpenedTagName()))
+			{
+				myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.WRONG_REF).descriptionAndTooltip("Unknown tag").range(closeTag.getNameIdentifier()).create());
+			}
+		}
+		else if(tableBlock.getType() == TwigTableBlock.TwigBlockType.BLOCK)
+		{
+			if(closeTag == null)
+			{
+				myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).descriptionAndTooltip("Tag is not closed").range(openTag).create());
+				return;
+			}
+
+			if(!Comparing.equal(openTag.getOpenedTagName(), closeTag.getOpenedTagName()))
+			{
+				myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).descriptionAndTooltip("Wrong close tag name").range(closeTag.getNameIdentifier()).create());
+			}
 		}
 	}
 
