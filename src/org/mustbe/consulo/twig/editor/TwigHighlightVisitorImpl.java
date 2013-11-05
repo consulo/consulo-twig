@@ -19,6 +19,7 @@ package org.mustbe.consulo.twig.editor;
 import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.twig.highlight.TwigSyntaxHighlighterKeys;
 import org.mustbe.consulo.twig.psi.TwigBlock;
+import org.mustbe.consulo.twig.psi.TwigConstantExpression;
 import org.mustbe.consulo.twig.psi.TwigExpressionBody;
 import org.mustbe.consulo.twig.psi.TwigFile;
 import org.mustbe.consulo.twig.psi.TwigReferenceExpression;
@@ -35,6 +36,7 @@ import com.intellij.openapi.util.Comparing;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReference;
+import com.intellij.psi.impl.source.resolve.reference.impl.providers.FileReference;
 
 /**
  * @author VISTALL
@@ -84,6 +86,37 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 		super.visitExpressionBody(twigExpression);
 
 		myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION).range(twigExpression).textAttributes(TwigSyntaxHighlighterKeys.TAG).create());
+	}
+
+	@Override
+	public void visitConstantExpression(TwigConstantExpression twigConstantExpression)
+	{
+		super.visitConstantExpression(twigConstantExpression);
+
+		boolean foundFileRef = false;
+		PsiElement ref = null;
+		PsiReference[] references = twigConstantExpression.getReferences();
+		for(PsiReference reference : references)
+		{
+			if(reference instanceof FileReference)
+			{
+				foundFileRef = true;
+
+				FileReference lastReference = ((FileReference) reference).getFileReferenceSet().getLastReference();
+				PsiElement temp = lastReference == null ? null : lastReference.resolve();
+
+				if(temp instanceof PsiFile)
+				{
+					ref = temp;
+					break;
+				}
+			}
+		}
+
+		if(foundFileRef && ref == null)
+		{
+			myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.WRONG_REF).descriptionAndTooltip("File is not resolved").range(twigConstantExpression).create());
+		}
 	}
 
 	@Override

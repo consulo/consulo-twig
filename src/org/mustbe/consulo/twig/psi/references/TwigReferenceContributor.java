@@ -22,6 +22,7 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mustbe.consulo.twig.psi.TwigBinaryExpression;
+import org.mustbe.consulo.twig.psi.TwigConstantExpression;
 import org.mustbe.consulo.twig.psi.TwigElement;
 import org.mustbe.consulo.twig.psi.TwigPsiUtil;
 import org.mustbe.consulo.twig.psi.TwigReferenceExpression;
@@ -42,6 +43,7 @@ import com.intellij.psi.PsiReferenceProvider;
 import com.intellij.psi.PsiReferenceRegistrar;
 import com.intellij.psi.ResolveResult;
 import com.intellij.psi.ResolveState;
+import com.intellij.psi.impl.source.resolve.reference.impl.providers.FileReferenceSet;
 import com.intellij.psi.scope.BaseScopeProcessor;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.ArrayUtil;
@@ -195,6 +197,22 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 							}
 						}
 				};
+			}
+		});
+
+		psiReferenceRegistrar.registerReferenceProvider(StandardPatterns.psiElement(TwigConstantExpression.class).withParent(TwigTag.class), new PsiReferenceProvider()
+		{
+			@NotNull
+			@Override
+			public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext processingContext)
+			{
+				TwigTag parent = (TwigTag) element.getParent();
+				if(Comparing.equal(parent.getName(), "extends"))
+				{
+					FileReferenceSet set = FileReferenceSet.createSet(element, true, false, false);
+					return set.getAllReferences();
+				}
+				return new PsiReference[0];
 			}
 		});
 	}

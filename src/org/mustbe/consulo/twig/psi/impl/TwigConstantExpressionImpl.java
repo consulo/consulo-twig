@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.twig.psi.TwigConstantExpression;
 import org.mustbe.consulo.twig.psi.TwigVisitor;
 import com.intellij.lang.ASTNode;
+import com.intellij.psi.PsiReference;
+import com.intellij.psi.impl.source.resolve.reference.ReferenceProvidersRegistry;
 
 /**
  * @author VISTALL
@@ -30,6 +32,13 @@ public class TwigConstantExpressionImpl extends TwigExpressionImpl implements Tw
 	public TwigConstantExpressionImpl(@NotNull ASTNode node)
 	{
 		super(node);
+	}
+
+	@NotNull
+	@Override
+	public PsiReference[] getReferences()
+	{
+		return ReferenceProvidersRegistry.getReferencesFromProviders(this);
 	}
 
 	@Override
