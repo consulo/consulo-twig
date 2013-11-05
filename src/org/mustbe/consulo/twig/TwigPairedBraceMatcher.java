@@ -18,7 +18,6 @@ package org.mustbe.consulo.twig;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.twig.psi.TwigElements;
 import com.intellij.lang.BracePair;
 import com.intellij.lang.PairedBraceMatcher;
 import com.intellij.psi.PsiFile;
@@ -30,8 +29,10 @@ import com.intellij.psi.tree.IElementType;
  */
 public class TwigPairedBraceMatcher implements PairedBraceMatcher
 {
-	private static final BracePair[] ourPairs = new BracePair[]{
-		new BracePair(TwigElements.OPEN_TAG, TwigElements.CLOSE_TAG, false)
+	private static final BracePair[] ourPairs = new BracePair[]
+	{
+	//	new BracePair(TwigTokens.STMT_OPEN, TwigTokens.STMT_CLOSE, false),
+	//	new BracePair(TwigTokens.VAR_OPEN, TwigTokens.VAR_CLOSE, false)
 	};
 
 	@Override

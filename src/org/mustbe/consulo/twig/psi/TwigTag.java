@@ -16,7 +16,9 @@
 
 package org.mustbe.consulo.twig.psi;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
 
 /**
@@ -27,4 +29,10 @@ public interface TwigTag extends TwigElement, PsiNameIdentifierOwner
 {
 	@Nullable
 	String getOpenedTagName();
+
+	@NotNull
+	PsiElement getOpenElement();
+
+	@Nullable
+	PsiElement getCloseElement();
 }

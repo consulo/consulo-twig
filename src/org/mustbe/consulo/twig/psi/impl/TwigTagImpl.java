@@ -62,6 +62,20 @@ public class TwigTagImpl extends TwigElementImpl implements TwigTag
 		return name;
 	}
 
+	@NotNull
+	@Override
+	public PsiElement getOpenElement()
+	{
+		return findNotNullChildByType(TwigTokens.STMT_OPEN);
+	}
+
+	@Nullable
+	@Override
+	public PsiElement getCloseElement()
+	{
+		return findChildByType(TwigTokens.STMT_CLOSE);
+	}
+
 	@Override
 	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
 	{
@@ -86,7 +100,7 @@ public class TwigTagImpl extends TwigElementImpl implements TwigTag
 	@Override
 	public PsiElement getNameIdentifier()
 	{
-		return findNotNullChildByType(TwigTokens.BLOCK_NAME);
+		return findChildByType(TwigTokens.BLOCK_NAME);
 	}
 
 	@Override

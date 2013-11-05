@@ -34,6 +34,7 @@
 		<lang.braceMatcher language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigPairedBraceMatcher" />
 		<lang.foldingBuilder language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigFoldingBuilder" />
 
+		<typedHandler implementation="org.mustbe.consulo.twig.editor.TwigTypedHandler" />
 		<psi.referenceContributor language="TWIG" implementation="org.mustbe.consulo.twig.psi.references.TwigReferenceContributor" />
 		<lang.elementManipulator forClass="org.mustbe.consulo.twig.psi.TwigReferenceExpression" implementationClass="org.mustbe.consulo.twig.psi.references.TwigReferenceElementManipulator" />
 	</extensions>
