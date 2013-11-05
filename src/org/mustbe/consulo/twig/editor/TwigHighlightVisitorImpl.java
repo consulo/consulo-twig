@@ -63,6 +63,12 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 	}
 
 	@Override
+	public void visitElement(PsiElement element)
+	{
+		element.acceptChildren(this);
+	}
+
+	@Override
 	public void visitTag(TwigTag tag)
 	{
 		super.visitTag(tag);

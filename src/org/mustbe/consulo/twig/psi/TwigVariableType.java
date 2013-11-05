@@ -16,18 +16,32 @@
 
 package org.mustbe.consulo.twig.psi;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.intellij.psi.PsiElement;
 
 /**
  * @author VISTALL
- * @since 02.11.13.
+ * @since 05.11.13.
  */
-public interface TwigBlock extends TwigElement
+public class TwigVariableType
 {
-	@NotNull
-	TwigTag getOpenTag();
+	public static TwigVariableType UNKNOWN = new TwigVariableType("?", null);
 
-	@Nullable
-	TwigTag getCloseTag();
+	private String myType;
+	private PsiElement myNavElement;
+
+	public TwigVariableType(String type, PsiElement navElement)
+	{
+		myType = type;
+		myNavElement = navElement;
+	}
+
+	public String getType()
+	{
+		return myType;
+	}
+
+	public PsiElement getNavElement()
+	{
+		return myNavElement;
+	}
 }

@@ -16,56 +16,13 @@
 
 package org.mustbe.consulo.twig.psi;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.impl.source.resolve.reference.ReferenceProvidersRegistry;
-import com.intellij.util.IncorrectOperationException;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigReferenceExpression extends TwigElement implements PsiNameIdentifierOwner
+public interface TwigReferenceExpression extends TwigExpression, PsiNameIdentifierOwner
 {
-	public TwigReferenceExpression(@NotNull ASTNode node)
-	{
-		super(node);
-	}
 
-	@NotNull
-	@Override
-	public PsiReference[] getReferences()
-	{
-		return ReferenceProvidersRegistry.getReferencesFromProviders(this);
-	}
-
-	@Override
-	public void accept(@NotNull TwigVisitor visitor)
-	{
-		visitor.visitReferenceExpression(this);
-	}
-
-	@Override
-	public String getName()
-	{
-		return getText();
-	}
-
-	@Nullable
-	@Override
-	public PsiElement getNameIdentifier()
-	{
-		return this;
-	}
-
-	@Override
-	public PsiElement setName(@NonNls @NotNull String s) throws IncorrectOperationException
-	{
-		return null;
-	}
 }

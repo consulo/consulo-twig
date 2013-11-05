@@ -16,35 +16,12 @@
 
 package org.mustbe.consulo.twig.psi;
 
-import org.jetbrains.annotations.NotNull;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElementVisitor;
+import com.intellij.psi.PsiElement;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public abstract class TwigElement extends ASTWrapperPsiElement
+public interface TwigElement extends PsiElement
 {
-	public TwigElement(@NotNull ASTNode node)
-	{
-		super(node);
-	}
-
-
-	@Override
-	public void accept(@NotNull PsiElementVisitor visitor)
-	{
-		if(visitor instanceof TwigVisitor)
-		{
-			accept((TwigVisitor) visitor);
-		}
-		else
-		{
-			super.accept(visitor);
-		}
-	}
-
-	public abstract void accept(@NotNull TwigVisitor visitor);
 }

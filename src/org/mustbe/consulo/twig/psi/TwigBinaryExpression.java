@@ -17,52 +17,18 @@
 package org.mustbe.consulo.twig.psi;
 
 import org.jetbrains.annotations.NotNull;
-import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
 import com.intellij.psi.tree.IElementType;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigBinaryExpression extends TwigElement
+public interface TwigBinaryExpression extends TwigExpression
 {
-	public TwigBinaryExpression(@NotNull ASTNode node)
-	{
-		super(node);
-	}
+	@NotNull
+	PsiElement getLeftElement();
 
 	@NotNull
-	public PsiElement getLeftElement()
-	{
-		return getFirstChild();
-	}
-
-	@NotNull
-	public IElementType getTokenType()
-	{
-		PsiElement element = findNotNullChildByType(TwigTokens.BINARY_TOKENS);
-		return element.getNode().getElementType();
-	}
-
-	@Override
-	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
-	{
-		for(PsiElement element : getChildren())
-		{
-			if(!processor.execute(element, state))
-			{
-				return false;
-			}
-		}
-		return super.processDeclarations(processor, state, lastParent, place);
-	}
-
-	@Override
-	public void accept(@NotNull TwigVisitor visitor)
-	{
-		visitor.visitBinaryExpression(this);
-	}
+	IElementType getTokenType();
 }

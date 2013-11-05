@@ -19,6 +19,10 @@
 	<name>Twig</name>
 	<depends>com.intellij.xml</depends>
 
+	<extensionPoints>
+		<extensionPoint name="variableProvider" interface="org.mustbe.consulo.twig.psi.TwigVariableProvider" />
+	</extensionPoints>
+
 	<extensions defaultExtensionNs="com.intellij">
 		<lang.parserDefinition language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigParserDefinition" />
 		<fileTypeFactory implementation="org.mustbe.consulo.twig.TwigFileTypeFactory" />

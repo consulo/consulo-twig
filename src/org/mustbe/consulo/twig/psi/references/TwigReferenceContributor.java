@@ -27,6 +27,10 @@ import org.mustbe.consulo.twig.psi.TwigPsiUtil;
 import org.mustbe.consulo.twig.psi.TwigReferenceExpression;
 import org.mustbe.consulo.twig.psi.TwigTag;
 import org.mustbe.consulo.twig.psi.TwigTokens;
+import org.mustbe.consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
+import com.intellij.codeInsight.lookup.LookupElement;
+import com.intellij.codeInsight.lookup.LookupElementBuilder;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.util.Comparing;
 import com.intellij.patterns.StandardPatterns;
 import com.intellij.psi.PsiElement;
@@ -107,6 +111,11 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 			return false;
 		}
 
+		if(expression instanceof LightTwigVariableDeclaration)
+		{
+			return true;
+		}
+
 		PsiElement parent = expression.getParent();
 		if(parent instanceof TwigTag)
 		{
@@ -164,7 +173,18 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 
 								TwigPsiUtil.treeWalkUp(processor, getElement(), getElement().getContainingFile());
 
-								return ArrayUtil.toObjectArray(processor.getElements());
+								List<PsiElement> elements = processor.getElements();
+								List<LookupElement> lookupElements = new ArrayList<LookupElement>(elements.size());
+								for(PsiElement psiElement : elements)
+								{
+									TwigReferenceExpression expression = (TwigReferenceExpression) psiElement;
+
+									LookupElementBuilder lookupElement = LookupElementBuilder.create(psiElement.getText());
+									lookupElement = lookupElement.withIcon(AllIcons.Nodes.Variable);
+									lookupElement = lookupElement.withTypeText(expression.getType().getType());
+									lookupElements.add(lookupElement);
+								}
+								return ArrayUtil.toObjectArray(lookupElements);
 							}
 						}
 				};

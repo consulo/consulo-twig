@@ -16,79 +16,15 @@
 
 package org.mustbe.consulo.twig.psi;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
-import com.intellij.util.IncorrectOperationException;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigTag extends TwigElement implements PsiNameIdentifierOwner
+public interface TwigTag extends TwigElement, PsiNameIdentifierOwner
 {
-	public TwigTag(@NotNull ASTNode node)
-	{
-		super(node);
-	}
-
-	@Override
-	public void accept(@NotNull TwigVisitor visitor)
-	{
-		visitor.visitTag(this);
-	}
-
-	public String getOpenedTagName()
-	{
-		String name = getName();
-		if(name == null)
-		{
-			return null;
-		}
-		if(StringUtil.startsWith(name, "end"))
-		{
-			return name.substring(3, name.length());
-		}
-
-		return name;
-	}
-
-	@Override
-	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
-	{
-		for(PsiElement element : getChildren())
-		{
-			if(!TwigPsiUtil.treeWalkUp(processor, element, element, state))
-			{
-				return false;
-			}
-		}
-		return super.processDeclarations(processor, state, lastParent, place);
-	}
-
-	@Override
-	public String getName()
-	{
-		PsiElement nameIdentifier = getNameIdentifier();
-		return nameIdentifier == null ? null : nameIdentifier.getText();
-	}
-
 	@Nullable
-	@Override
-	public PsiElement getNameIdentifier()
-	{
-		return findNotNullChildByType(TwigTokens.BLOCK_NAME);
-	}
-
-	@Override
-	public PsiElement setName(@NonNls @NotNull String s) throws IncorrectOperationException
-	{
-		return null;
-	}
+	String getOpenedTagName();
 }

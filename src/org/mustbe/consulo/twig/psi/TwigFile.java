@@ -16,12 +16,18 @@
 
 package org.mustbe.consulo.twig.psi;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.twig.TwigFileType;
 import org.mustbe.consulo.twig.TwigLanguage;
+import org.mustbe.consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.ResolveState;
+import com.intellij.psi.scope.PsiScopeProcessor;
 
 /**
  * @author VISTALL
@@ -32,6 +38,29 @@ public class TwigFile extends PsiFileBase
 	public TwigFile(@NotNull FileViewProvider viewProvider)
 	{
 		super(viewProvider, TwigLanguage.INSTANCE);
+	}
+
+	@Override
+	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
+	{
+		for(TwigVariableProvider provider : TwigVariableProvider.EP_NAME.getExtensions())
+		{
+			List<TwigVariable> variables = provider.getVariables(this);
+			for(TwigVariable variable : variables)
+			{
+				LightTwigVariableDeclaration twigReferenceExpression = new LightTwigVariableDeclaration(this, variable);
+				if(variable.getVariableType().getNavElement() == null)
+				{
+					twigReferenceExpression.setNavigationElement(this);
+				}
+
+				if(!processor.execute(twigReferenceExpression, state))
+				{
+					return false;
+				}
+			}
+		}
+		return super.processDeclarations(processor, state, lastParent, place);
 	}
 
 	@NotNull

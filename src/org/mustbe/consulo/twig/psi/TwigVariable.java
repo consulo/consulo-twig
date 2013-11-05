@@ -16,18 +16,28 @@
 
 package org.mustbe.consulo.twig.psi;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 /**
  * @author VISTALL
- * @since 02.11.13.
+ * @since 05.11.13.
  */
-public interface TwigBlock extends TwigElement
+public class TwigVariable
 {
-	@NotNull
-	TwigTag getOpenTag();
+	private final String myName;
+	private final TwigVariableType myVariableType;
 
-	@Nullable
-	TwigTag getCloseTag();
+	public TwigVariable(String name, TwigVariableType variableType)
+	{
+		myName = name;
+		myVariableType = variableType;
+	}
+
+	public String getName()
+	{
+		return myName;
+	}
+
+	public TwigVariableType getVariableType()
+	{
+		return myVariableType;
+	}
 }

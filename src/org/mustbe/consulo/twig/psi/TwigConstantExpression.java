@@ -16,23 +16,11 @@
 
 package org.mustbe.consulo.twig.psi;
 
-import org.jetbrains.annotations.NotNull;
-import com.intellij.lang.ASTNode;
-
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigConstantExpression extends TwigElement
+public interface TwigConstantExpression extends TwigExpression
 {
-	public TwigConstantExpression(@NotNull ASTNode node)
-	{
-		super(node);
-	}
 
-	@Override
-	public void accept(@NotNull TwigVisitor visitor)
-	{
-		visitor.visitConstantExpression(this);
-	}
 }

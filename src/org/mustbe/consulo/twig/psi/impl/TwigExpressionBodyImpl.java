@@ -14,20 +14,27 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.twig.psi;
+package org.mustbe.consulo.twig.psi.impl;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.mustbe.consulo.twig.psi.TwigExpressionBody;
+import org.mustbe.consulo.twig.psi.TwigVisitor;
+import com.intellij.lang.ASTNode;
 
 /**
  * @author VISTALL
- * @since 02.11.13.
+ * @since 05.11.13.
  */
-public interface TwigBlock extends TwigElement
+public class TwigExpressionBodyImpl extends TwigElementImpl implements TwigExpressionBody
 {
-	@NotNull
-	TwigTag getOpenTag();
+	public TwigExpressionBodyImpl(@NotNull ASTNode node)
+	{
+		super(node);
+	}
 
-	@Nullable
-	TwigTag getCloseTag();
+	@Override
+	public void accept(@NotNull TwigVisitor visitor)
+	{
+		visitor.visitExpressionBody(this);
+	}
 }

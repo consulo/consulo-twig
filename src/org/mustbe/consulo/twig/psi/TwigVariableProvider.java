@@ -16,18 +16,19 @@
 
 package org.mustbe.consulo.twig.psi;
 
+import java.util.List;
+
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.intellij.openapi.extensions.ExtensionPointName;
 
 /**
  * @author VISTALL
- * @since 02.11.13.
+ * @since 05.11.13.
  */
-public interface TwigBlock extends TwigElement
+public interface TwigVariableProvider
 {
-	@NotNull
-	TwigTag getOpenTag();
+	ExtensionPointName<TwigVariableProvider> EP_NAME = ExtensionPointName.create("org.mustbe.consulo.twig.variableProvider");
 
-	@Nullable
-	TwigTag getCloseTag();
+	@NotNull
+	List<TwigVariable> getVariables(@NotNull TwigFile twigFile);
 }
