@@ -19,6 +19,9 @@ package org.mustbe.consulo.twig.psi;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.ResolveState;
+import com.intellij.psi.scope.PsiScopeProcessor;
 
 /**
  * @author VISTALL
@@ -47,5 +50,16 @@ public class TwigBlock extends TwigElement
 	public void accept(@NotNull TwigVisitor visitor)
 	{
 		visitor.visitBlock(this);
+	}
+
+	@Override
+	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
+	{
+		TwigTag openTag = getOpenTag();
+		if(!TwigPsiUtil.treeWalkUp(processor, openTag, openTag, state))
+		{
+			return false;
+		}
+		return super.processDeclarations(processor, state, lastParent, place);
 	}
 }

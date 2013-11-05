@@ -19,6 +19,7 @@ package org.mustbe.consulo.twig.psi;
 import org.mustbe.consulo.twig.TwigLanguage;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author VISTALL
@@ -57,4 +58,6 @@ public interface TwigTokens extends TokenType
 	IElementType IN_KEYWORD = new IElementType("IN_KEYWORD", TwigLanguage.INSTANCE);
 
 	IElementType IS_KEYWORD = new IElementType("IS_KEYWORD", TwigLanguage.INSTANCE);
+
+	TokenSet BINARY_TOKENS = TokenSet.create(IN_KEYWORD, IS_KEYWORD, OR);
 }

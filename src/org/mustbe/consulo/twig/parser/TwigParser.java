@@ -152,7 +152,7 @@ public class TwigParser implements PsiParser, TwigTokens, TwigElements
 		}
 
 		IElementType tokenType = builder.getTokenType();
-		if(tokenType == OR || tokenType == IS_KEYWORD || tokenType == IN_KEYWORD)
+		if(TwigTokens.BINARY_TOKENS.contains(tokenType))
 		{
 			marker = marker.precede();
 

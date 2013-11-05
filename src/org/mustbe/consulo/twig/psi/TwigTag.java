@@ -23,6 +23,8 @@ import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
+import com.intellij.psi.ResolveState;
+import com.intellij.psi.scope.PsiScopeProcessor;
 import com.intellij.util.IncorrectOperationException;
 
 /**
@@ -55,6 +57,19 @@ public class TwigTag extends TwigElement implements PsiNameIdentifierOwner
 		}
 
 		return name;
+	}
+
+	@Override
+	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
+	{
+		for(PsiElement element : getChildren())
+		{
+			if(!TwigPsiUtil.treeWalkUp(processor, element, element, state))
+			{
+				return false;
+			}
+		}
+		return super.processDeclarations(processor, state, lastParent, place);
 	}
 
 	@Override

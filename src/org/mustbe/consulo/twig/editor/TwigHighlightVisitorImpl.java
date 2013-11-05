@@ -21,8 +21,10 @@ import org.mustbe.consulo.twig.highlight.TwigSyntaxHighlighterKeys;
 import org.mustbe.consulo.twig.psi.TwigBlock;
 import org.mustbe.consulo.twig.psi.TwigExpressionBody;
 import org.mustbe.consulo.twig.psi.TwigFile;
+import org.mustbe.consulo.twig.psi.TwigReferenceExpression;
 import org.mustbe.consulo.twig.psi.TwigTag;
 import org.mustbe.consulo.twig.psi.TwigVisitor;
+import org.mustbe.consulo.twig.psi.references.TwigReferenceContributor;
 import com.intellij.codeInsight.daemon.impl.HighlightInfo;
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType;
 import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
@@ -30,6 +32,7 @@ import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder;
 import com.intellij.openapi.util.Comparing;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiReference;
 
 /**
  * @author VISTALL
@@ -73,6 +76,33 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 		super.visitExpressionBody(twigExpression);
 
 		myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION).range(twigExpression).textAttributes(TwigSyntaxHighlighterKeys.TAG).create());
+	}
+
+	@Override
+	public void visitReferenceExpression(TwigReferenceExpression twigReferenceExpression)
+	{
+		super.visitReferenceExpression(twigReferenceExpression);
+
+		if(TwigReferenceContributor.isNotReference(twigReferenceExpression))
+		{
+			return;
+		}
+
+		PsiElement ref = null;
+		PsiReference[] references = twigReferenceExpression.getReferences();
+		for(PsiReference reference : references)
+		{
+			ref = reference.resolve();
+			if(ref != null)
+			{
+				break;
+			}
+		}
+
+		if(ref == null)
+		{
+			myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.WRONG_REF).descriptionAndTooltip("Reference is not resolved").range(twigReferenceExpression).create());
+		}
 	}
 
 	@Override

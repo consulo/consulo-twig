@@ -29,5 +29,8 @@
 		<highlightVisitor implementation="org.mustbe.consulo.twig.editor.TwigHighlightVisitorImpl" />
 		<lang.braceMatcher language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigPairedBraceMatcher" />
 		<lang.foldingBuilder language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigFoldingBuilder" />
+
+		<psi.referenceContributor language="TWIG" implementation="org.mustbe.consulo.twig.psi.references.TwigReferenceContributor" />
+		<lang.elementManipulator forClass="org.mustbe.consulo.twig.psi.TwigReferenceExpression" implementationClass="org.mustbe.consulo.twig.psi.references.TwigReferenceElementManipulator" />
 	</extensions>
 </idea-plugin>
