@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 must-be.org
+ * Copyright 2013-2014 must-be.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,8 +32,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.IElementTypeAsPsiFactory;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 
@@ -91,11 +89,6 @@ public class TwigParserDefinition implements ParserDefinition
 	@Override
 	public PsiElement createElement(ASTNode astNode)
 	{
-		IElementType elementType = astNode.getElementType();
-		if(elementType instanceof IElementTypeAsPsiFactory)
-		{
-			return ((IElementTypeAsPsiFactory) elementType).createElement(astNode);
-		}
 		return new ASTWrapperPsiElement(astNode);
 	}
 

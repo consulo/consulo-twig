@@ -2,15 +2,8 @@
   <artifact build-on-make="true" name="plugin">
     <output-path>$PROJECT_DIR$/out/artifacts/plugin</output-path>
     <root id="root">
-      <element id="directory" name="twig">
-        <element id="directory" name="lib">
-          <element id="zip-archive" name="twig.jar">
-            <element id="module-output" name="consulo-twig" />
-            <element id="module-production-resource-output" name="consulo-twig" />
-          </element>
-        </element>
-      </element>
       <element id="dir-copy" path="$PROJECT_DIR$/dep" />
+      <element id="artifact" artifact-name="dist" />
     </root>
   </artifact>
 </component>
