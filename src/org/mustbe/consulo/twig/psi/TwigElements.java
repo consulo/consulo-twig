@@ -24,7 +24,7 @@ import org.mustbe.consulo.twig.psi.impl.TwigExpressionBodyImpl;
 import org.mustbe.consulo.twig.psi.impl.TwigReferenceExpressionImpl;
 import org.mustbe.consulo.twig.psi.impl.TwigTagImpl;
 import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.IElementTypeAsPsiFactory;
+import com.intellij.psi.tree.ElementTypeAsPsiFactory;
 
 /**
  * @author VISTALL
@@ -32,17 +32,17 @@ import com.intellij.psi.tree.IElementTypeAsPsiFactory;
  */
 public interface TwigElements
 {
-	IElementType OPEN_TAG = new IElementTypeAsPsiFactory("OPEN_TAG", TwigLanguage.INSTANCE, TwigTagImpl.class);
+	IElementType OPEN_TAG = new ElementTypeAsPsiFactory("OPEN_TAG", TwigLanguage.INSTANCE, TwigTagImpl.class);
 
-	IElementType CLOSE_TAG = new IElementTypeAsPsiFactory("CLOSE_TAG", TwigLanguage.INSTANCE, TwigTagImpl.class);
+	IElementType CLOSE_TAG = new ElementTypeAsPsiFactory("CLOSE_TAG", TwigLanguage.INSTANCE, TwigTagImpl.class);
 
-	IElementType BLOCK = new IElementTypeAsPsiFactory("BLOCK", TwigLanguage.INSTANCE, TwigBlockImpl.class);
+	IElementType BLOCK = new ElementTypeAsPsiFactory("BLOCK", TwigLanguage.INSTANCE, TwigBlockImpl.class);
 
-	IElementType EXPRESSION_BODY = new IElementTypeAsPsiFactory("EXPRESSION_BODY", TwigLanguage.INSTANCE, TwigExpressionBodyImpl.class);
+	IElementType EXPRESSION_BODY = new ElementTypeAsPsiFactory("EXPRESSION_BODY", TwigLanguage.INSTANCE, TwigExpressionBodyImpl.class);
 
-	IElementType CONSTANT_EXPRESSION = new IElementTypeAsPsiFactory("CONSTANT_EXPRESSION", TwigLanguage.INSTANCE, TwigConstantExpressionImpl.class);
+	IElementType CONSTANT_EXPRESSION = new ElementTypeAsPsiFactory("CONSTANT_EXPRESSION", TwigLanguage.INSTANCE, TwigConstantExpressionImpl.class);
 
-	IElementType REFERENCE_EXPRESSION = new IElementTypeAsPsiFactory("REFERENCE_EXPRESSION", TwigLanguage.INSTANCE, TwigReferenceExpressionImpl.class);
+	IElementType REFERENCE_EXPRESSION = new ElementTypeAsPsiFactory("REFERENCE_EXPRESSION", TwigLanguage.INSTANCE, TwigReferenceExpressionImpl.class);
 
-	IElementType BINARY_EXPRESSION = new IElementTypeAsPsiFactory("BINARY_EXPRESSION", TwigLanguage.INSTANCE, TwigBinaryExpressionImpl.class);
+	IElementType BINARY_EXPRESSION = new ElementTypeAsPsiFactory("BINARY_EXPRESSION", TwigLanguage.INSTANCE, TwigBinaryExpressionImpl.class);
 }
