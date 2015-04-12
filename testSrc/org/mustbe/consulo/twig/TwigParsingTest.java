@@ -26,7 +26,13 @@ public class TwigParsingTest extends ParsingTestCase
 {
 	public TwigParsingTest()
 	{
-		super("parsing", "twig", new TwigParserDefinition());
+		super("parsing", "twig");
+	}
+
+	@Override
+	protected boolean checkAllPsiRoots()
+	{
+		return false;
 	}
 
 	@Override
@@ -73,6 +79,6 @@ public class TwigParsingTest extends ParsingTestCase
 	@Override
 	protected String getTestDataPath()
 	{
-		return "testData";
+		return "/testData";
 	}
 }

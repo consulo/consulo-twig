@@ -17,6 +17,7 @@
 <idea-plugin>
 	<id>org.mustbe.consulo.twig</id>
 	<name>Twig</name>
+	<version>SNAPSHOT</version>
 	<depends>com.intellij.xml</depends>
 
 	<extensionPoints>
