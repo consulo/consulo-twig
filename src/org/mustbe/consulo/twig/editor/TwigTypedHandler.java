@@ -21,7 +21,6 @@ import com.intellij.codeInsight.editorActions.TypedHandlerDelegate;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
-import lombok.val;
 
 /**
  * @author VISTALL
@@ -58,7 +57,7 @@ public class TwigTypedHandler extends TypedHandlerDelegate
 			return super.charTyped(c, project, editor, file);
 		}
 
-		val offset = editor.getCaretModel().getOffset();
+		int offset = editor.getCaretModel().getOffset();
 		for(char[] insertChar : ourInsertChars)
 		{
 			if(insertChar[1] == c)

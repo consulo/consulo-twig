@@ -25,12 +25,12 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.ex.util.LayerDescriptor;
 import com.intellij.openapi.editor.ex.util.LayeredLexerEditorHighlighter;
+import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.PlainTextFileType;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.tree.IElementType;
-import lombok.val;
 
 /**
  * @author VISTALL
@@ -42,7 +42,7 @@ public class TwigEditorHighlighter extends LayeredLexerEditorHighlighter
 	public TwigEditorHighlighter(@Nullable final Project project, @Nullable final VirtualFile virtualFile, @NotNull final EditorColorsScheme colors)
 	{
 		super(new TwigSyntaxHighlighter(), colors);
-		val highlighter = getTemplateDataLanguageHighlighter(project, virtualFile);
+		final SyntaxHighlighter highlighter = getTemplateDataLanguageHighlighter(project, virtualFile);
 		registerLayer(TwigTokens.T_INLINE_HTML, new LayerDescriptor(new SyntaxHighlighter()
 		{
 			@NotNull
@@ -62,9 +62,9 @@ public class TwigEditorHighlighter extends LayeredLexerEditorHighlighter
 	@NotNull
 	private static SyntaxHighlighter getTemplateDataLanguageHighlighter(final Project project, final VirtualFile virtualFile)
 	{
-		val type = project == null || virtualFile == null ? null : TwigFileViewProvider.getTemplateDataLanguage(virtualFile, project).getAssociatedFileType();
-		val fileType = type == null ? PlainTextFileType.INSTANCE : type;
-		val highlighter = TwigSyntaxHighlighterFactory.getSyntaxHighlighter(fileType, project, virtualFile);
+		FileType type = project == null || virtualFile == null ? null : TwigFileViewProvider.getTemplateDataLanguage(virtualFile, project).getAssociatedFileType();
+		FileType fileType = type == null ? PlainTextFileType.INSTANCE : type;
+		SyntaxHighlighter highlighter = TwigSyntaxHighlighterFactory.getSyntaxHighlighter(fileType, project, virtualFile);
 		assert highlighter != null;
 		return highlighter;
 	}

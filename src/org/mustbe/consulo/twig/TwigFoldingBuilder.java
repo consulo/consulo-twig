@@ -17,6 +17,7 @@
 package org.mustbe.consulo.twig;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +31,6 @@ import com.intellij.lang.folding.FoldingDescriptor;
 import com.intellij.openapi.editor.Document;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
-import lombok.val;
 
 /**
  * @author VISTALL
@@ -42,7 +42,7 @@ public class TwigFoldingBuilder implements FoldingBuilder
 	@Override
 	public FoldingDescriptor[] buildFoldRegions(@NotNull ASTNode astNode, @NotNull Document document)
 	{
-		val list = new ArrayList<FoldingDescriptor>();
+		final List<FoldingDescriptor> list = new ArrayList<FoldingDescriptor>();
 		PsiElement psi = astNode.getPsi();
 		psi.accept(new TwigVisitor()
 		{

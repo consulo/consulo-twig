@@ -17,6 +17,8 @@
 package org.mustbe.consulo.twig.completion;
 
 import org.jetbrains.annotations.NotNull;
+import org.mustbe.consulo.RequiredReadAction;
+import org.mustbe.consulo.codeInsight.completion.CompletionProvider;
 import org.mustbe.consulo.twig.psi.TwigBlock;
 import org.mustbe.consulo.twig.psi.TwigElements;
 import org.mustbe.consulo.twig.psi.TwigTokens;
@@ -24,7 +26,6 @@ import org.mustbe.consulo.twig.table.TwigTable;
 import org.mustbe.consulo.twig.table.TwigTableBlock;
 import com.intellij.codeInsight.completion.CompletionContributor;
 import com.intellij.codeInsight.completion.CompletionParameters;
-import com.intellij.codeInsight.completion.CompletionProvider;
 import com.intellij.codeInsight.completion.CompletionResultSet;
 import com.intellij.codeInsight.completion.CompletionType;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
@@ -40,8 +41,9 @@ public class TwigCompletionProvider extends CompletionContributor
 {
 	public TwigCompletionProvider()
 	{
-		extend(CompletionType.BASIC, StandardPatterns.psiElement(TwigTokens.BLOCK_NAME), new CompletionProvider<CompletionParameters>()
+		extend(CompletionType.BASIC, StandardPatterns.psiElement(TwigTokens.BLOCK_NAME), new CompletionProvider()
 		{
+			@RequiredReadAction
 			@Override
 			protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet)
 			{

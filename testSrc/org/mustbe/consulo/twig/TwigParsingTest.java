@@ -16,7 +16,7 @@
 
 package org.mustbe.consulo.twig;
 
-import com.intellij.testFramework.ParsingTestCase;
+import consulo.testFramework.ParsingTestCase;
 
 /**
  * @author VISTALL
