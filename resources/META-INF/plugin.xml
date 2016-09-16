@@ -15,31 +15,31 @@
   -->
 
 <idea-plugin>
-	<id>org.mustbe.consulo.twig</id>
+	<id>consulo.twig</id>
 	<name>Twig</name>
 	<version>SNAPSHOT</version>
 	<depends>com.intellij.xml</depends>
 
 	<extensionPoints>
-		<extensionPoint name="variableProvider" interface="org.mustbe.consulo.twig.psi.TwigVariableProvider" />
+		<extensionPoint name="variableProvider" interface="consulo.twig.psi.TwigVariableProvider" />
 	</extensionPoints>
 
 	<extensions defaultExtensionNs="com.intellij">
-		<lang.parserDefinition language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigParserDefinition" />
-		<fileTypeFactory implementation="org.mustbe.consulo.twig.TwigFileTypeFactory" />
-		<lang.fileViewProviderFactory language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigFileViewProviderFactory"/>
-		<completion.contributor language="TWIG" implementationClass="org.mustbe.consulo.twig.completion.TwigCompletionProvider" />
-		<lang.syntaxHighlighterFactory key="TWIG" implementationClass="org.mustbe.consulo.twig.highlight.TwigSyntaxHighlighterFactory"/>
-		<syntaxHighlighter key="TWIG" implementationClass="org.mustbe.consulo.twig.highlight.TwigSyntaxHighlighter"/>
-		<highlightVisitor implementation="org.mustbe.consulo.twig.editor.TwigHighlightVisitorImpl" />
-		<lang.braceMatcher language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigPairedBraceMatcher" />
-		<lang.foldingBuilder language="TWIG" implementationClass="org.mustbe.consulo.twig.TwigFoldingBuilder" />
+		<lang.parserDefinition language="TWIG" implementationClass="consulo.twig.TwigParserDefinition" />
+		<fileTypeFactory implementation="consulo.twig.TwigFileTypeFactory" />
+		<lang.fileViewProviderFactory language="TWIG" implementationClass="consulo.twig.TwigFileViewProviderFactory"/>
+		<completion.contributor language="TWIG" implementationClass="consulo.twig.completion.TwigCompletionProvider" />
+		<lang.syntaxHighlighterFactory key="TWIG" implementationClass="consulo.twig.highlight.TwigSyntaxHighlighterFactory"/>
+		<syntaxHighlighter key="TWIG" implementationClass="consulo.twig.highlight.TwigSyntaxHighlighter"/>
+		<highlightVisitor implementation="consulo.twig.editor.TwigHighlightVisitorImpl" />
+		<lang.braceMatcher language="TWIG" implementationClass="consulo.twig.TwigPairedBraceMatcher" />
+		<lang.foldingBuilder language="TWIG" implementationClass="consulo.twig.TwigFoldingBuilder" />
 
-		<typedHandler implementation="org.mustbe.consulo.twig.editor.TwigTypedHandler" />
+		<typedHandler implementation="consulo.twig.editor.TwigTypedHandler" />
 
-		<psi.referenceContributor language="TWIG" implementation="org.mustbe.consulo.twig.psi.references.TwigReferenceContributor" />
+		<psi.referenceContributor language="TWIG" implementation="consulo.twig.psi.references.TwigReferenceContributor" />
 
-		<lang.elementManipulator forClass="org.mustbe.consulo.twig.psi.TwigReferenceExpression" implementationClass="org.mustbe.consulo.twig.psi.references.TwigReferenceElementManipulator" />
-		<lang.elementManipulator forClass="org.mustbe.consulo.twig.psi.TwigConstantExpression" implementationClass="org.mustbe.consulo.twig.psi.references.TwigConstantElementManipulator" />
+		<lang.elementManipulator forClass="consulo.twig.psi.TwigReferenceExpression" implementationClass="consulo.twig.psi.references.TwigReferenceElementManipulator" />
+		<lang.elementManipulator forClass="consulo.twig.psi.TwigConstantExpression" implementationClass="consulo.twig.psi.references.TwigConstantElementManipulator" />
 	</extensions>
 </idea-plugin>
