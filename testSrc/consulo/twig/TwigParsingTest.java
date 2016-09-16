@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.twig;
+package consulo.twig;
 
 import consulo.testFramework.ParsingTestCase;
 

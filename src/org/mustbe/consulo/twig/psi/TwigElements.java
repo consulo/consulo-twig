@@ -24,7 +24,7 @@ import org.mustbe.consulo.twig.psi.impl.TwigExpressionBodyImpl;
 import org.mustbe.consulo.twig.psi.impl.TwigReferenceExpressionImpl;
 import org.mustbe.consulo.twig.psi.impl.TwigTagImpl;
 import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.ElementTypeAsPsiFactory;
+import consulo.psi.tree.ElementTypeAsPsiFactory;
 
 /**
  * @author VISTALL

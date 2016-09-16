@@ -56,7 +56,7 @@ public class TwigFileType extends LanguageFileType
 
 	@NotNull
 	@Override
-	public String getName()
+	public String getId()
 	{
 		return "TWIG";
 	}

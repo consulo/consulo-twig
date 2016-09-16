@@ -17,23 +17,21 @@
 package org.mustbe.consulo.twig;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.mustbe.consulo.twig.lexer.TwigLexer;
 import org.mustbe.consulo.twig.parser.TwigParser;
 import org.mustbe.consulo.twig.psi.TwigFile;
 import org.mustbe.consulo.twig.psi.TwigTokens;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
-import com.intellij.lang.LanguageVersion;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
 import com.intellij.lexer.Lexer;
-import com.intellij.openapi.project.Project;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
+import consulo.lang.LanguageVersion;
 
 /**
  * @author VISTALL
@@ -45,14 +43,14 @@ public class TwigParserDefinition implements ParserDefinition
 
 	@NotNull
 	@Override
-	public Lexer createLexer(@Nullable Project project, @NotNull LanguageVersion languageVersion)
+	public Lexer createLexer(@NotNull LanguageVersion languageVersion)
 	{
 		return new TwigLexer();
 	}
 
 	@NotNull
 	@Override
-	public PsiParser createParser(@Nullable Project project, @NotNull LanguageVersion languageVersion)
+	public PsiParser createParser(@NotNull LanguageVersion languageVersion)
 	{
 		return new TwigParser();
 	}

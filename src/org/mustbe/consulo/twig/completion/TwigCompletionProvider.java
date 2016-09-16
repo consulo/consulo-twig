@@ -17,8 +17,6 @@
 package org.mustbe.consulo.twig.completion;
 
 import org.jetbrains.annotations.NotNull;
-import org.mustbe.consulo.RequiredReadAction;
-import org.mustbe.consulo.codeInsight.completion.CompletionProvider;
 import org.mustbe.consulo.twig.psi.TwigBlock;
 import org.mustbe.consulo.twig.psi.TwigElements;
 import org.mustbe.consulo.twig.psi.TwigTokens;
@@ -32,6 +30,8 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.patterns.StandardPatterns;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ProcessingContext;
+import consulo.annotations.RequiredReadAction;
+import consulo.codeInsight.completion.CompletionProvider;
 
 /**
  * @author VISTALL
@@ -45,7 +45,7 @@ public class TwigCompletionProvider extends CompletionContributor
 		{
 			@RequiredReadAction
 			@Override
-			protected void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet)
+			public void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet)
 			{
 				PsiElement originalPosition = completionParameters.getPosition();
 				if(originalPosition.getParent().getNode().getElementType() == TwigElements.CLOSE_TAG)

@@ -25,12 +25,12 @@ import org.jetbrains.annotations.Nullable;
 import org.mustbe.consulo.twig.psi.TwigElements;
 import org.mustbe.consulo.twig.psi.TwigTokens;
 import com.intellij.lang.ASTNode;
-import com.intellij.lang.LanguageVersion;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.tree.IElementType;
+import consulo.lang.LanguageVersion;
 
 /**
  * @author VISTALL
