@@ -16,13 +16,29 @@
 
 package consulo.twig;
 
-import consulo.lombok.annotations.Bundle;
+import org.jetbrains.annotations.PropertyKey;
+import com.intellij.AbstractBundle;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-@Bundle("messages.TwigBundle")
-public class TwigBundle
+public class TwigBundle extends AbstractBundle
 {
+	private static final TwigBundle ourInstance = new TwigBundle();
+
+	private TwigBundle()
+	{
+		super("messages.TwigBundle");
+	}
+
+	public static String message(@PropertyKey(resourceBundle = "messages.TwigBundle") String key)
+	{
+		return ourInstance.getMessage(key);
+	}
+
+	public static String message(@PropertyKey(resourceBundle = "messages.TwigBundle") String key, Object... params)
+	{
+		return ourInstance.getMessage(key, params);
+	}
 }

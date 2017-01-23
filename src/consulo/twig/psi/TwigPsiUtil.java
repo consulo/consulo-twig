@@ -16,9 +16,9 @@
 
 package consulo.twig.psi;
 
-import consulo.lombok.annotations.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressIndicatorProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiInvalidElementAccessException;
@@ -29,9 +29,10 @@ import com.intellij.psi.scope.PsiScopeProcessor;
  * @author VISTALL
  * @since 05.11.13.
  */
-@Logger
 public class TwigPsiUtil
 {
+	private static final Logger LOGGER = Logger.getInstance(TwigPsiUtil.class);
+
 	private TwigPsiUtil()
 	{
 	}
@@ -45,7 +46,7 @@ public class TwigPsiUtil
 	{
 		if(!entrance.isValid())
 		{
-			TwigPsiUtil.LOGGER.error(new PsiInvalidElementAccessException(entrance));
+			LOGGER.error(new PsiInvalidElementAccessException(entrance));
 		}
 		PsiElement prevParent = entrance;
 		PsiElement scope = entrance;

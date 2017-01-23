@@ -16,25 +16,26 @@
 
 package consulo.twig.table;
 
-import com.intellij.openapi.util.JDOMUtil;
-import consulo.lombok.annotations.Logger;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.util.JDOMUtil;
+
 /**
  * @author VISTALL
  * @since 05.11.13.
  */
-@Logger
 public class TwigTable
 {
+	private static final Logger LOGGER = Logger.getInstance(TwigTable.class);
+
 	public static TwigTable INSTANCE = new TwigTable();
 
 	private Map<String, TwigTableBlock> myBlocks = new HashMap<String, TwigTableBlock>();
@@ -49,7 +50,7 @@ public class TwigTable
 		InputStream resourceAsStream = getClass().getResourceAsStream("/twigTable.xml");
 		if(resourceAsStream == null)
 		{
-			TwigTable.LOGGER.warn("No twig table");
+			LOGGER.warn("No twig table");
 			return;
 		}
 
@@ -58,13 +59,9 @@ public class TwigTable
 			Document document = JDOMUtil.loadDocument(resourceAsStream);
 			loadDocument(document.getRootElement());
 		}
-		catch(JDOMException e)
+		catch(JDOMException | IOException e)
 		{
-			TwigTable.LOGGER.error(e);
-		}
-		catch(IOException e)
-		{
-			TwigTable.LOGGER.error(e);
+			LOGGER.error(e);
 		}
 	}
 
