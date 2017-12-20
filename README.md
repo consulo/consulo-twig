@@ -1,1 +1,1 @@
-[![Build Status](http://must-be.org/jenkins/job/consulo-twig/badge/icon)](http://must-be.org/jenkins/job/consulo-twig/)
+[![Build Status](https://ci.consulo.io/job/consulo-twig/badge/icon)](https://ci.consulo.io/job/consulo-twig/)
