@@ -16,14 +16,10 @@
 
 package consulo.twig;
 
-import gnu.trove.THashSet;
-
-import java.util.Arrays;
 import java.util.Set;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import consulo.twig.psi.TwigTemplateTokens;
 import com.intellij.lang.Language;
 import com.intellij.lang.LanguageParserDefinitions;
 import com.intellij.lang.html.HTMLLanguage;
@@ -41,6 +37,8 @@ import com.intellij.psi.impl.source.PsiFileImpl;
 import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
 import com.intellij.psi.templateLanguages.TemplateLanguage;
 import com.intellij.psi.templateLanguages.TemplateLanguageFileViewProvider;
+import com.intellij.util.containers.ContainerUtil;
+import consulo.twig.psi.TwigTemplateTokens;
 
 /**
  * @author VISTALL
@@ -104,12 +102,12 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 	@Override
 	public Set<Language> getLanguages()
 	{
-		return new THashSet<Language>(Arrays.asList(TwigLanguage.INSTANCE, getTemplateDataLanguage()));
+		return ContainerUtil.newHashSet(TwigLanguage.INSTANCE, getTemplateDataLanguage());
 	}
 
 	@Nullable
 	@Override
-	protected PsiFile createFile(final Language lang)
+	protected PsiFile createFile(@NotNull Language lang)
 	{
 		if(lang == getBaseLanguage())
 		{
