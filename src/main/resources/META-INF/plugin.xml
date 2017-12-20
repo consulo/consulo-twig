@@ -30,7 +30,7 @@
 		<fileTypeFactory implementation="consulo.twig.TwigFileTypeFactory" />
 		<lang.fileViewProviderFactory language="TWIG" implementationClass="consulo.twig.TwigFileViewProviderFactory"/>
 		<completion.contributor language="TWIG" implementationClass="consulo.twig.completion.TwigCompletionProvider" />
-		<lang.syntaxHighlighterFactory key="TWIG" implementationClass="consulo.twig.highlight.TwigSyntaxHighlighterFactory"/>
+		<lang.syntaxHighlighterFactory language="TWIG" implementationClass="consulo.twig.highlight.TwigSyntaxHighlighterFactory"/>
 		<syntaxHighlighter key="TWIG" implementationClass="consulo.twig.highlight.TwigSyntaxHighlighter"/>
 		<highlightVisitor implementation="consulo.twig.editor.TwigHighlightVisitorImpl" />
 		<lang.braceMatcher language="TWIG" implementationClass="consulo.twig.TwigPairedBraceMatcher" />
