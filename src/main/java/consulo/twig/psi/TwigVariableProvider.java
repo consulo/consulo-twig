@@ -18,7 +18,8 @@ package consulo.twig.psi;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.extensions.ExtensionPointName;
 
 /**
@@ -29,6 +30,6 @@ public interface TwigVariableProvider
 {
 	ExtensionPointName<TwigVariableProvider> EP_NAME = ExtensionPointName.create("consulo.twig.variableProvider");
 
-	@NotNull
-	List<TwigVariable> getVariables(@NotNull TwigFile twigFile);
+	@Nonnull
+	List<TwigVariable> getVariables(@Nonnull TwigFile twigFile);
 }

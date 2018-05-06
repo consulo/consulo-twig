@@ -20,8 +20,8 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import consulo.twig.psi.TwigElements;
 import consulo.twig.psi.TwigTokens;
 import com.intellij.lang.ASTNode;
@@ -38,7 +38,7 @@ import consulo.lang.LanguageVersion;
  */
 public class TwigParser implements PsiParser, TwigTokens, TwigElements
 {
-	@NotNull
+	@Nonnull
 	private static Pair<Boolean, String> tagInfo(@Nullable String tagName)
 	{
 		if(tagName == null)
@@ -55,9 +55,9 @@ public class TwigParser implements PsiParser, TwigTokens, TwigElements
 		}
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
-	public ASTNode parse(@NotNull IElementType elementType, @NotNull PsiBuilder builder, @NotNull LanguageVersion languageVersion)
+	public ASTNode parse(@Nonnull IElementType elementType, @Nonnull PsiBuilder builder, @Nonnull LanguageVersion languageVersion)
 	{
 		PsiBuilder.Marker mark = builder.mark();
 

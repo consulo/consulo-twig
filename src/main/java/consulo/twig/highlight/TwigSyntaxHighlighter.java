@@ -19,7 +19,7 @@ package consulo.twig.highlight;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import consulo.twig.lexer.TwigLexer;
 import consulo.twig.psi.TwigTokens;
 import com.intellij.lexer.Lexer;
@@ -47,14 +47,14 @@ public class TwigSyntaxHighlighter extends SyntaxHighlighterBase
 		}
 	};
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Lexer getHighlightingLexer()
 	{
 		return new TwigLexer();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public TextAttributesKey[] getTokenHighlights(IElementType elementType)
 	{

@@ -16,7 +16,7 @@
 
 package consulo.twig.psi.impl;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import consulo.twig.psi.TwigExpressionBody;
 import consulo.twig.psi.TwigVisitor;
 import com.intellij.lang.ASTNode;
@@ -27,13 +27,13 @@ import com.intellij.lang.ASTNode;
  */
 public class TwigExpressionBodyImpl extends TwigElementImpl implements TwigExpressionBody
 {
-	public TwigExpressionBodyImpl(@NotNull ASTNode node)
+	public TwigExpressionBodyImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}
 
 	@Override
-	public void accept(@NotNull TwigVisitor visitor)
+	public void accept(@Nonnull TwigVisitor visitor)
 	{
 		visitor.visitExpressionBody(this);
 	}

@@ -16,7 +16,8 @@
 
 package consulo.twig.psi;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 
@@ -26,9 +27,9 @@ import com.intellij.psi.tree.IElementType;
  */
 public interface TwigBinaryExpression extends TwigExpression
 {
-	@NotNull
+	@Nonnull
 	PsiElement getLeftElement();
 
-	@NotNull
+	@Nonnull
 	IElementType getTokenType();
 }

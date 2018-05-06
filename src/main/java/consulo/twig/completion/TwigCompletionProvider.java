@@ -16,7 +16,8 @@
 
 package consulo.twig.completion;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.twig.psi.TwigBlock;
 import consulo.twig.psi.TwigElements;
 import consulo.twig.psi.TwigTokens;
@@ -45,7 +46,7 @@ public class TwigCompletionProvider extends CompletionContributor
 		{
 			@RequiredReadAction
 			@Override
-			public void addCompletions(@NotNull CompletionParameters completionParameters, ProcessingContext processingContext, @NotNull CompletionResultSet completionResultSet)
+			public void addCompletions(@Nonnull CompletionParameters completionParameters, ProcessingContext processingContext, @Nonnull CompletionResultSet completionResultSet)
 			{
 				PsiElement originalPosition = completionParameters.getPosition();
 				if(originalPosition.getParent().getNode().getElementType() == TwigElements.CLOSE_TAG)

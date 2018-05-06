@@ -16,7 +16,8 @@
 
 package consulo.twig.editor;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.editorActions.TypedHandlerDelegate;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
@@ -50,7 +51,7 @@ public class TwigTypedHandler extends TypedHandlerDelegate
 	};
 
 	@Override
-	public Result charTyped(char c, Project project, Editor editor, @NotNull PsiFile file)
+	public Result charTyped(char c, Project project, Editor editor, @Nonnull PsiFile file)
 	{
 		if(editor.getDocument().getTextLength() <= 1)
 		{

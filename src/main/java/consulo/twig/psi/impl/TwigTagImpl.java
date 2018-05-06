@@ -16,9 +16,11 @@
 
 package consulo.twig.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import consulo.twig.psi.TwigPsiUtil;
 import consulo.twig.psi.TwigTag;
 import consulo.twig.psi.TwigTokens;
@@ -36,13 +38,13 @@ import com.intellij.util.IncorrectOperationException;
  */
 public class TwigTagImpl extends TwigElementImpl implements TwigTag
 {
-	public TwigTagImpl(@NotNull ASTNode node)
+	public TwigTagImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}
 
 	@Override
-	public void accept(@NotNull TwigVisitor visitor)
+	public void accept(@Nonnull TwigVisitor visitor)
 	{
 		visitor.visitTag(this);
 	}
@@ -62,7 +64,7 @@ public class TwigTagImpl extends TwigElementImpl implements TwigTag
 		return name;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public PsiElement getOpenElement()
 	{
@@ -77,7 +79,7 @@ public class TwigTagImpl extends TwigElementImpl implements TwigTag
 	}
 
 	@Override
-	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
+	public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place)
 	{
 		for(PsiElement element : getChildren())
 		{
@@ -104,7 +106,7 @@ public class TwigTagImpl extends TwigElementImpl implements TwigTag
 	}
 
 	@Override
-	public PsiElement setName(@NonNls @NotNull String s) throws IncorrectOperationException
+	public PsiElement setName(@NonNls @Nonnull String s) throws IncorrectOperationException
 	{
 		return null;
 	}

@@ -16,8 +16,8 @@
 
 package consulo.twig.psi;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
 
@@ -30,7 +30,7 @@ public interface TwigTag extends TwigElement, PsiNameIdentifierOwner
 	@Nullable
 	String getOpenedTagName();
 
-	@NotNull
+	@Nonnull
 	PsiElement getOpenElement();
 
 	@Nullable

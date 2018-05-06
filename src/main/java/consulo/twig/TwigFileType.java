@@ -16,10 +16,10 @@
 
 package consulo.twig;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import consulo.twig.highlight.TwigEditorHighlighter;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -46,7 +46,7 @@ public class TwigFileType extends LanguageFileType
 		FileTypeEditorHighlighterProviders.INSTANCE.addExplicitExtension(this, new EditorHighlighterProvider()
 		{
 			@Override
-			public EditorHighlighter getEditorHighlighter(@Nullable Project project, @NotNull FileType fileType, @Nullable VirtualFile virtualFile, @NotNull EditorColorsScheme colors)
+			public EditorHighlighter getEditorHighlighter(@Nullable Project project, @Nonnull FileType fileType, @Nullable VirtualFile virtualFile, @Nonnull EditorColorsScheme colors)
 			{
 				return new TwigEditorHighlighter(project, virtualFile, colors);
 			}
@@ -54,21 +54,21 @@ public class TwigFileType extends LanguageFileType
 
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getId()
 	{
 		return "TWIG";
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getDescription()
 	{
 		return TwigBundle.message("twig.file.type.description");
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getDefaultExtension()
 	{

@@ -16,7 +16,7 @@
 
 package consulo.twig.psi.impl;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import consulo.twig.psi.TwigExpression;
 import consulo.twig.psi.TwigVariableType;
 import com.intellij.lang.ASTNode;
@@ -27,7 +27,7 @@ import com.intellij.lang.ASTNode;
  */
 public abstract class TwigExpressionImpl extends TwigElementImpl implements TwigExpression
 {
-	public TwigExpressionImpl(@NotNull ASTNode node)
+	public TwigExpressionImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}

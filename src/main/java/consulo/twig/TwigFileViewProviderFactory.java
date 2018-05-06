@@ -16,7 +16,8 @@
 
 package consulo.twig;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.Language;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.FileViewProvider;
@@ -30,7 +31,7 @@ import com.intellij.psi.PsiManager;
 public class TwigFileViewProviderFactory implements FileViewProviderFactory
 {
 	@Override
-	public FileViewProvider createFileViewProvider(@NotNull VirtualFile virtualFile, Language language, @NotNull PsiManager psiManager, boolean b)
+	public FileViewProvider createFileViewProvider(@Nonnull VirtualFile virtualFile, Language language, @Nonnull PsiManager psiManager, boolean b)
 	{
 		return new TwigFileViewProvider(psiManager, virtualFile, b);
 	}

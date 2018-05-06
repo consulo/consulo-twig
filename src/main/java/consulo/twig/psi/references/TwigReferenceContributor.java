@@ -19,8 +19,8 @@ package consulo.twig.psi.references;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import consulo.twig.psi.TwigBinaryExpression;
 import consulo.twig.psi.TwigConstantExpression;
 import consulo.twig.psi.TwigElement;
@@ -68,7 +68,7 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 		}
 
 		@Override
-		public boolean execute(@NotNull PsiElement element, ResolveState resolveState)
+		public boolean execute(@Nonnull PsiElement element, ResolveState resolveState)
 		{
 			if(myElement == element)
 			{
@@ -150,9 +150,9 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 	{
 		psiReferenceRegistrar.registerReferenceProvider(StandardPatterns.psiElement(TwigReferenceExpression.class), new PsiReferenceProvider()
 		{
-			@NotNull
+			@Nonnull
 			@Override
-			public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext processingContext)
+			public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext processingContext)
 			{
 				if(isNotReference(element))
 				{
@@ -163,7 +163,7 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 				{
 						new PsiPolyVariantReferenceBase<TwigElement>((TwigElement) element)
 						{
-							@NotNull
+							@Nonnull
 							@Override
 							public ResolveResult[] multiResolve(boolean b)
 							{
@@ -174,7 +174,7 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 								return processor.getResults();
 							}
 
-							@NotNull
+							@Nonnull
 							@Override
 							public Object[] getVariants()
 							{
@@ -202,9 +202,9 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 
 		psiReferenceRegistrar.registerReferenceProvider(StandardPatterns.psiElement(TwigConstantExpression.class).withParent(TwigTag.class), new PsiReferenceProvider()
 		{
-			@NotNull
+			@Nonnull
 			@Override
-			public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext processingContext)
+			public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext processingContext)
 			{
 				TwigTag parent = (TwigTag) element.getParent();
 				if(Comparing.equal(parent.getName(), "extends"))

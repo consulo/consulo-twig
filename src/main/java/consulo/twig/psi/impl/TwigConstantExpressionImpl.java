@@ -16,7 +16,8 @@
 
 package consulo.twig.psi.impl;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.twig.psi.TwigConstantExpression;
 import consulo.twig.psi.TwigVisitor;
 import com.intellij.lang.ASTNode;
@@ -29,12 +30,12 @@ import com.intellij.psi.impl.source.resolve.reference.ReferenceProvidersRegistry
  */
 public class TwigConstantExpressionImpl extends TwigExpressionImpl implements TwigConstantExpression
 {
-	public TwigConstantExpressionImpl(@NotNull ASTNode node)
+	public TwigConstantExpressionImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public PsiReference[] getReferences()
 	{
@@ -42,7 +43,7 @@ public class TwigConstantExpressionImpl extends TwigExpressionImpl implements Tw
 	}
 
 	@Override
-	public void accept(@NotNull TwigVisitor visitor)
+	public void accept(@Nonnull TwigVisitor visitor)
 	{
 		visitor.visitConstantExpression(this);
 	}

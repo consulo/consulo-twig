@@ -16,8 +16,9 @@
 
 package consulo.twig.psi;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressIndicatorProvider;
 import com.intellij.psi.PsiElement;
@@ -37,12 +38,12 @@ public class TwigPsiUtil
 	{
 	}
 
-	public static boolean treeWalkUp(@NotNull PsiScopeProcessor processor, @NotNull PsiElement entrance, @Nullable PsiElement maxScope)
+	public static boolean treeWalkUp(@Nonnull PsiScopeProcessor processor, @Nonnull PsiElement entrance, @Nullable PsiElement maxScope)
 	{
 		return treeWalkUp(processor, entrance, maxScope, ResolveState.initial());
 	}
 
-	public static boolean treeWalkUp(@NotNull final PsiScopeProcessor processor, @NotNull final PsiElement entrance, @Nullable final PsiElement maxScope, @NotNull final ResolveState state)
+	public static boolean treeWalkUp(@Nonnull final PsiScopeProcessor processor, @Nonnull final PsiElement entrance, @Nullable final PsiElement maxScope, @Nonnull final ResolveState state)
 	{
 		if(!entrance.isValid())
 		{
@@ -77,7 +78,7 @@ public class TwigPsiUtil
 		return true;
 	}
 
-	public static boolean walkChildrenScopes(@NotNull PsiElement thisElement, @NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, PsiElement place)
+	public static boolean walkChildrenScopes(@Nonnull PsiElement thisElement, @Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, PsiElement place)
 	{
 		PsiElement child = null;
 		if(lastParent != null && lastParent.getParent() == thisElement)

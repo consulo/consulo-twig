@@ -16,8 +16,9 @@
 
 package consulo.twig.psi.impl;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import consulo.twig.psi.TwigBlock;
 import consulo.twig.psi.TwigElements;
 import consulo.twig.psi.TwigPsiUtil;
@@ -34,12 +35,12 @@ import com.intellij.psi.scope.PsiScopeProcessor;
  */
 public class TwigBlockImpl extends TwigElementImpl implements TwigBlock
 {
-	public TwigBlockImpl(@NotNull ASTNode node)
+	public TwigBlockImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}
 
-	@NotNull
+	@Nonnull
 	public TwigTag getOpenTag()
 	{
 		return (TwigTag) findNotNullChildByType(TwigElements.OPEN_TAG);
@@ -52,13 +53,13 @@ public class TwigBlockImpl extends TwigElementImpl implements TwigBlock
 	}
 
 	@Override
-	public void accept(@NotNull TwigVisitor visitor)
+	public void accept(@Nonnull TwigVisitor visitor)
 	{
 		visitor.visitBlock(this);
 	}
 
 	@Override
-	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
+	public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place)
 	{
 		TwigTag openTag = getOpenTag();
 		if(!TwigPsiUtil.treeWalkUp(processor, openTag, openTag, state))

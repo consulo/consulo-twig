@@ -16,7 +16,8 @@
 
 package consulo.twig.psi.impl;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.twig.psi.TwigElement;
 import consulo.twig.psi.TwigVisitor;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
@@ -29,14 +30,14 @@ import com.intellij.psi.PsiElementVisitor;
  */
 public abstract class TwigElementImpl extends ASTWrapperPsiElement implements TwigElement
 {
-	public TwigElementImpl(@NotNull ASTNode node)
+	public TwigElementImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}
 
 
 	@Override
-	public void accept(@NotNull PsiElementVisitor visitor)
+	public void accept(@Nonnull PsiElementVisitor visitor)
 	{
 		if(visitor instanceof TwigVisitor)
 		{
@@ -48,5 +49,5 @@ public abstract class TwigElementImpl extends ASTWrapperPsiElement implements Tw
 		}
 	}
 
-	public abstract void accept(@NotNull TwigVisitor visitor);
+	public abstract void accept(@Nonnull TwigVisitor visitor);
 }

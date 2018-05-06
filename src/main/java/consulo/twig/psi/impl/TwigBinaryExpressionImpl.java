@@ -16,7 +16,8 @@
 
 package consulo.twig.psi.impl;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.twig.psi.TwigBinaryExpression;
 import consulo.twig.psi.TwigTokens;
 import consulo.twig.psi.TwigVisitor;
@@ -32,19 +33,19 @@ import com.intellij.psi.tree.IElementType;
  */
 public class TwigBinaryExpressionImpl extends TwigExpressionImpl implements TwigBinaryExpression
 {
-	public TwigBinaryExpressionImpl(@NotNull ASTNode node)
+	public TwigBinaryExpressionImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public PsiElement getLeftElement()
 	{
 		return getFirstChild();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public IElementType getTokenType()
 	{
@@ -53,7 +54,7 @@ public class TwigBinaryExpressionImpl extends TwigExpressionImpl implements Twig
 	}
 
 	@Override
-	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
+	public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place)
 	{
 		for(PsiElement element : getChildren())
 		{
@@ -66,7 +67,7 @@ public class TwigBinaryExpressionImpl extends TwigExpressionImpl implements Twig
 	}
 
 	@Override
-	public void accept(@NotNull TwigVisitor visitor)
+	public void accept(@Nonnull TwigVisitor visitor)
 	{
 		visitor.visitBinaryExpression(this);
 	}

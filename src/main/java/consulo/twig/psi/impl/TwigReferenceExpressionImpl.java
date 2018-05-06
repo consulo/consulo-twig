@@ -16,9 +16,10 @@
 
 package consulo.twig.psi.impl;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import consulo.twig.psi.TwigReferenceExpression;
 import consulo.twig.psi.TwigVisitor;
 import com.intellij.lang.ASTNode;
@@ -33,12 +34,12 @@ import com.intellij.util.IncorrectOperationException;
  */
 public class TwigReferenceExpressionImpl extends TwigExpressionImpl implements TwigReferenceExpression
 {
-	public TwigReferenceExpressionImpl(@NotNull ASTNode node)
+	public TwigReferenceExpressionImpl(@Nonnull ASTNode node)
 	{
 		super(node);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public PsiReference[] getReferences()
 	{
@@ -46,7 +47,7 @@ public class TwigReferenceExpressionImpl extends TwigExpressionImpl implements T
 	}
 
 	@Override
-	public void accept(@NotNull TwigVisitor visitor)
+	public void accept(@Nonnull TwigVisitor visitor)
 	{
 		visitor.visitReferenceExpression(this);
 	}
@@ -65,7 +66,7 @@ public class TwigReferenceExpressionImpl extends TwigExpressionImpl implements T
 	}
 
 	@Override
-	public PsiElement setName(@NonNls @NotNull String s) throws IncorrectOperationException
+	public PsiElement setName(@NonNls @Nonnull String s) throws IncorrectOperationException
 	{
 		return null;
 	}

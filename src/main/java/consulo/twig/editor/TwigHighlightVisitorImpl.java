@@ -16,7 +16,8 @@
 
 package consulo.twig.editor;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.twig.highlight.TwigSyntaxHighlighterKeys;
 import consulo.twig.psi.TwigBlock;
 import consulo.twig.psi.TwigConstantExpression;
@@ -47,19 +48,19 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 	private HighlightInfoHolder myHighlightInfoHolder;
 
 	@Override
-	public boolean suitableForFile(@NotNull PsiFile psiFile)
+	public boolean suitableForFile(@Nonnull PsiFile psiFile)
 	{
 		return psiFile instanceof TwigFile;
 	}
 
 	@Override
-	public void visit(@NotNull PsiElement element)
+	public void visit(@Nonnull PsiElement element)
 	{
 		element.accept(this);
 	}
 
 	@Override
-	public boolean analyze(@NotNull PsiFile psiFile, boolean b, @NotNull HighlightInfoHolder highlightInfoHolder, @NotNull Runnable runnable)
+	public boolean analyze(@Nonnull PsiFile psiFile, boolean b, @Nonnull HighlightInfoHolder highlightInfoHolder, @Nonnull Runnable runnable)
 	{
 		myHighlightInfoHolder = highlightInfoHolder;
 		runnable.run();
@@ -179,7 +180,7 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 		}
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public HighlightVisitor clone()
 	{

@@ -17,8 +17,8 @@
 package consulo.twig.psi.impl.light;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import consulo.twig.TwigLanguage;
 import consulo.twig.psi.TwigReferenceExpression;
 import consulo.twig.psi.TwigVariable;
@@ -70,7 +70,7 @@ public class LightTwigVariableDeclaration extends LightElement implements TwigRe
 	}
 
 	@Override
-	public PsiElement setName(@NonNls @NotNull String s) throws IncorrectOperationException
+	public PsiElement setName(@NonNls @Nonnull String s) throws IncorrectOperationException
 	{
 		return null;
 	}

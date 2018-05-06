@@ -18,7 +18,8 @@ package consulo.twig.psi;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import consulo.twig.TwigFileType;
 import consulo.twig.TwigLanguage;
 import consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
@@ -35,13 +36,13 @@ import com.intellij.psi.scope.PsiScopeProcessor;
  */
 public class TwigFile extends PsiFileBase
 {
-	public TwigFile(@NotNull FileViewProvider viewProvider)
+	public TwigFile(@Nonnull FileViewProvider viewProvider)
 	{
 		super(viewProvider, TwigLanguage.INSTANCE);
 	}
 
 	@Override
-	public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place)
+	public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place)
 	{
 		for(TwigVariableProvider provider : TwigVariableProvider.EP_NAME.getExtensions())
 		{
@@ -63,7 +64,7 @@ public class TwigFile extends PsiFileBase
 		return super.processDeclarations(processor, state, lastParent, place);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public FileType getFileType()
 	{

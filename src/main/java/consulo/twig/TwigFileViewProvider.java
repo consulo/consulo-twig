@@ -18,8 +18,9 @@ package consulo.twig;
 
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.lang.Language;
 import com.intellij.lang.LanguageParserDefinitions;
 import com.intellij.lang.html.HTMLLanguage;
@@ -61,14 +62,14 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 		myTemplateDataLanguage = templateDataLanguage;
 	}
 
-	@NotNull
-	public static Language getTemplateDataLanguage(@NotNull VirtualFile virtualFile, @NotNull Project project)
+	@Nonnull
+	public static Language getTemplateDataLanguage(@Nonnull VirtualFile virtualFile, @Nonnull Project project)
 	{
 		final Language language = TemplateDataLanguageMappings.getInstance(project).getMapping(virtualFile);
 		return language == null ? getTemplateDataLanguageByExtention(virtualFile) : language;
 	}
 
-	@NotNull
+	@Nonnull
 	private static Language getTemplateDataLanguageByExtention(VirtualFile virtualFile)
 	{
 		String name = virtualFile.getName();
@@ -91,14 +92,14 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 		return HTMLLanguage.INSTANCE;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Language getBaseLanguage()
 	{
 		return TwigLanguage.INSTANCE;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Set<Language> getLanguages()
 	{
@@ -107,7 +108,7 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 
 	@Nullable
 	@Override
-	protected PsiFile createFile(@NotNull Language lang)
+	protected PsiFile createFile(@Nonnull Language lang)
 	{
 		if(lang == getBaseLanguage())
 		{
@@ -133,7 +134,7 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 		return new TwigFileViewProvider(getManager(), copy, false, myTemplateDataLanguage);
 	}
 
-	@NotNull
+	@Nonnull
 	public Language getTemplateDataLanguage()
 	{
 		return myTemplateDataLanguage;
