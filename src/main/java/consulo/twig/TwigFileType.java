@@ -17,10 +17,8 @@
 package consulo.twig;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
-
 import javax.annotation.Nullable;
-import consulo.twig.highlight.TwigEditorHighlighter;
+
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.highlighter.EditorHighlighter;
@@ -30,6 +28,8 @@ import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import consulo.twig.highlight.TwigEditorHighlighter;
+import consulo.ui.image.Image;
 
 /**
  * @author VISTALL
@@ -77,7 +77,7 @@ public class TwigFileType extends LanguageFileType
 
 	@Nullable
 	@Override
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return AllIcons.FileTypes.Custom;
 	}
