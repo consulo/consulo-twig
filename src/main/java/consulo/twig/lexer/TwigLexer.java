@@ -16,12 +16,9 @@
 
 package consulo.twig.lexer;
 
-import java.io.Reader;
-
-import consulo.twig.psi.TwigTokens;
-import com.intellij.lexer.FlexAdapter;
 import com.intellij.lexer.MergingLexerAdapter;
 import com.intellij.psi.tree.TokenSet;
+import consulo.twig.psi.TwigTokens;
 
 /**
  * @author VISTALL
@@ -31,6 +28,6 @@ public class TwigLexer extends MergingLexerAdapter
 {
 	public TwigLexer()
 	{
-		super(new FlexAdapter(new _TwigLexer((Reader) null)), TokenSet.create(TwigTokens.COMMENT));
+		super(new _TwigLexer(), TokenSet.create(TwigTokens.COMMENT));
 	}
 }

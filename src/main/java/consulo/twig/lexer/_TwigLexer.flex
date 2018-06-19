@@ -1,6 +1,6 @@
 package consulo.twig.lexer;
 
-import com.intellij.lexer.FlexLexer;
+import com.intellij.lexer.LexerBase;
 import com.intellij.psi.tree.IElementType;
 import consulo.twig.psi.TwigTokens;
 %%
@@ -8,12 +8,12 @@ import consulo.twig.psi.TwigTokens;
 /* -----------------Options and Declarations Section----------------- */
 
 %class _TwigLexer
-%implements FlexLexer
+%extends LexerBase
 %public
 %unicode
 %public
 
-%function advance
+%function advanceImpl
 %type IElementType
 
 %eof{ return;
