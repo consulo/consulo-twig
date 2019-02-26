@@ -44,7 +44,7 @@ public class TwigFile extends PsiFileBase
 	@Override
 	public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place)
 	{
-		for(TwigVariableProvider provider : TwigVariableProvider.EP_NAME.getExtensions())
+		for(TwigVariableProvider provider : TwigVariableProvider.EP_NAME.getExtensionList())
 		{
 			List<TwigVariable> variables = provider.getVariables(this);
 			for(TwigVariable variable : variables)
