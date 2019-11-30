@@ -14,7 +14,7 @@
   - limitations under the License.
   -->
 
-<idea-plugin>
+<consulo-plugin>
 	<id>consulo.twig</id>
 	<name>Twig</name>
 	<version>SNAPSHOT</version>
@@ -44,4 +44,4 @@
 		<lang.elementManipulator forClass="consulo.twig.psi.TwigReferenceExpression" implementationClass="consulo.twig.psi.references.TwigReferenceElementManipulator" />
 		<lang.elementManipulator forClass="consulo.twig.psi.TwigConstantExpression" implementationClass="consulo.twig.psi.references.TwigConstantElementManipulator" />
 	</extensions>
-</idea-plugin>
+</consulo-plugin>

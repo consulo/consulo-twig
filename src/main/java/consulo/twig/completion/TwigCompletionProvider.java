@@ -16,13 +16,6 @@
 
 package consulo.twig.completion;
 
-import javax.annotation.Nonnull;
-
-import consulo.twig.psi.TwigBlock;
-import consulo.twig.psi.TwigElements;
-import consulo.twig.psi.TwigTokens;
-import consulo.twig.table.TwigTable;
-import consulo.twig.table.TwigTableBlock;
 import com.intellij.codeInsight.completion.CompletionContributor;
 import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionResultSet;
@@ -31,8 +24,15 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.patterns.StandardPatterns;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ProcessingContext;
-import consulo.annotations.RequiredReadAction;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.codeInsight.completion.CompletionProvider;
+import consulo.twig.psi.TwigBlock;
+import consulo.twig.psi.TwigElements;
+import consulo.twig.psi.TwigTokens;
+import consulo.twig.table.TwigTable;
+import consulo.twig.table.TwigTableBlock;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
