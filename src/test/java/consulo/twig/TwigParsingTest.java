@@ -22,7 +22,7 @@ import consulo.testFramework.ParsingTestCase;
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigParsingTest extends ParsingTestCase
+public abstract class TwigParsingTest extends ParsingTestCase
 {
 	public TwigParsingTest()
 	{
