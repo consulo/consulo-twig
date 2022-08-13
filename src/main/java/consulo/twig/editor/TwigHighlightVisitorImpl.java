@@ -16,33 +16,29 @@
 
 package consulo.twig.editor;
 
-import javax.annotation.Nonnull;
-
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.rawHighlight.HighlightInfo;
+import consulo.language.editor.rawHighlight.HighlightInfoHolder;
+import consulo.language.editor.rawHighlight.HighlightInfoType;
+import consulo.language.editor.rawHighlight.HighlightVisitor;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.path.FileReference;
 import consulo.twig.highlight.TwigSyntaxHighlighterKeys;
-import consulo.twig.psi.TwigBlock;
-import consulo.twig.psi.TwigConstantExpression;
-import consulo.twig.psi.TwigExpressionBody;
-import consulo.twig.psi.TwigFile;
-import consulo.twig.psi.TwigReferenceExpression;
-import consulo.twig.psi.TwigTag;
-import consulo.twig.psi.TwigVisitor;
+import consulo.twig.psi.*;
 import consulo.twig.psi.references.TwigReferenceContributor;
 import consulo.twig.table.TwigTable;
 import consulo.twig.table.TwigTableBlock;
-import com.intellij.codeInsight.daemon.impl.HighlightInfo;
-import com.intellij.codeInsight.daemon.impl.HighlightInfoType;
-import com.intellij.codeInsight.daemon.impl.HighlightVisitor;
-import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder;
-import com.intellij.openapi.util.Comparing;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.impl.source.resolve.reference.impl.providers.FileReference;
+import consulo.util.lang.Comparing;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
+@ExtensionImpl
 public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVisitor
 {
 	private HighlightInfoHolder myHighlightInfoHolder;
@@ -185,11 +181,5 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 	public HighlightVisitor clone()
 	{
 		return new TwigHighlightVisitorImpl();
-	}
-
-	@Override
-	public int order()
-	{
-		return 0;
 	}
 }

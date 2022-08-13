@@ -16,14 +16,17 @@
 
 package consulo.twig;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.virtualFileSystem.fileType.FileTypeConsumer;
+import consulo.virtualFileSystem.fileType.FileTypeFactory;
+
 import javax.annotation.Nonnull;
-import com.intellij.openapi.fileTypes.FileTypeConsumer;
-import com.intellij.openapi.fileTypes.FileTypeFactory;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
+@ExtensionImpl
 public class TwigFileTypeFactory extends FileTypeFactory
 {
 	@Override

@@ -16,18 +16,14 @@
 
 package consulo.twig.psi.impl;
 
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.twig.psi.*;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import consulo.twig.psi.TwigBlock;
-import consulo.twig.psi.TwigElements;
-import consulo.twig.psi.TwigPsiUtil;
-import consulo.twig.psi.TwigTag;
-import consulo.twig.psi.TwigVisitor;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
 
 /**
  * @author VISTALL

@@ -16,15 +16,15 @@
 
 package consulo.twig.psi;
 
+import consulo.application.progress.ProgressIndicatorProvider;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiInvalidElementAccessException;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.logging.Logger;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.progress.ProgressIndicatorProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiInvalidElementAccessException;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
 
 /**
  * @author VISTALL

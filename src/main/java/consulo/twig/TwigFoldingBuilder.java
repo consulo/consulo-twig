@@ -16,27 +16,29 @@
 
 package consulo.twig;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import consulo.annotation.component.ExtensionImpl;
+import consulo.document.Document;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.folding.FoldingBuilder;
+import consulo.language.editor.folding.FoldingDescriptor;
+import consulo.language.psi.PsiElement;
 import consulo.twig.psi.TwigBlock;
 import consulo.twig.psi.TwigElements;
 import consulo.twig.psi.TwigTag;
 import consulo.twig.psi.TwigVisitor;
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.folding.FoldingBuilder;
-import com.intellij.lang.folding.FoldingDescriptor;
-import com.intellij.openapi.editor.Document;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
+@ExtensionImpl
 public class TwigFoldingBuilder implements FoldingBuilder
 {
 	@Nonnull
@@ -87,5 +89,12 @@ public class TwigFoldingBuilder implements FoldingBuilder
 	public boolean isCollapsedByDefault(@Nonnull ASTNode astNode)
 	{
 		return false;
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return TwigLanguage.INSTANCE;
 	}
 }

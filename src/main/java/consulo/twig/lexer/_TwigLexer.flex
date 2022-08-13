@@ -1,7 +1,7 @@
 package consulo.twig.lexer;
 
-import com.intellij.lexer.LexerBase;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.lexer.LexerBase;
+import consulo.language.ast.IElementType;
 import consulo.twig.psi.TwigTokens;
 %%
 

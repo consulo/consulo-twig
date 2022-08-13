@@ -16,19 +16,18 @@
 
 package consulo.twig.psi;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
+import consulo.language.file.FileViewProvider;
+import consulo.language.impl.psi.PsiFileBase;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
 import consulo.twig.TwigFileType;
 import consulo.twig.TwigLanguage;
 import consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
-import com.intellij.extapi.psi.PsiFileBase;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
+import consulo.virtualFileSystem.fileType.FileType;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 /**
  * @author VISTALL

@@ -16,17 +16,17 @@
 
 package consulo.twig.psi.impl;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import org.jetbrains.annotations.NonNls;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.ReferenceProvidersRegistry;
+import consulo.language.util.IncorrectOperationException;
 import consulo.twig.psi.TwigReferenceExpression;
 import consulo.twig.psi.TwigVisitor;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.impl.source.resolve.reference.ReferenceProvidersRegistry;
-import com.intellij.util.IncorrectOperationException;
+import org.jetbrains.annotations.NonNls;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author VISTALL
@@ -60,7 +60,7 @@ public class TwigReferenceExpressionImpl extends TwigExpressionImpl implements T
 
 	@Nullable
 	@Override
-	public com.intellij.psi.PsiElement getNameIdentifier()
+	public PsiElement getNameIdentifier()
 	{
 		return this;
 	}

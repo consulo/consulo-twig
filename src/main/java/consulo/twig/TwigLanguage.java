@@ -16,8 +16,8 @@
 
 package consulo.twig;
 
-import com.intellij.lang.Language;
-import com.intellij.psi.templateLanguages.TemplateLanguage;
+import consulo.language.Language;
+import consulo.language.template.TemplateLanguage;
 
 /**
  * @author VISTALL

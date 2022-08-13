@@ -16,23 +16,32 @@
 
 package consulo.twig;
 
-import javax.annotation.Nonnull;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.file.FileViewProvider;
+import consulo.language.file.LanguageFileViewProviderFactory;
+import consulo.language.psi.PsiManager;
+import consulo.virtualFileSystem.VirtualFile;
 
-import com.intellij.lang.Language;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.FileViewProviderFactory;
-import com.intellij.psi.PsiManager;
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public class TwigFileViewProviderFactory implements FileViewProviderFactory
+@ExtensionImpl
+public class TwigFileViewProviderFactory implements LanguageFileViewProviderFactory
 {
 	@Override
 	public FileViewProvider createFileViewProvider(@Nonnull VirtualFile virtualFile, Language language, @Nonnull PsiManager psiManager, boolean b)
 	{
 		return new TwigFileViewProvider(psiManager, virtualFile, b);
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return TwigLanguage.INSTANCE;
 	}
 }

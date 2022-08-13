@@ -16,17 +16,17 @@
 
 package consulo.twig.table;
 
+import consulo.logging.Logger;
+import consulo.util.jdom.JDOMUtil;
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.JDOMException;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.JDOMUtil;
 
 /**
  * @author VISTALL

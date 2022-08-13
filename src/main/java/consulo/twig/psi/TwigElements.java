@@ -16,33 +16,27 @@
 
 package consulo.twig.psi;
 
+import consulo.language.ast.ElementTypeAsPsiFactory;
+import consulo.language.ast.IElementType;
 import consulo.twig.TwigLanguage;
-import consulo.twig.psi.impl.TwigBinaryExpressionImpl;
-import consulo.twig.psi.impl.TwigBlockImpl;
-import consulo.twig.psi.impl.TwigConstantExpressionImpl;
-import consulo.twig.psi.impl.TwigExpressionBodyImpl;
-import consulo.twig.psi.impl.TwigReferenceExpressionImpl;
-import consulo.twig.psi.impl.TwigTagImpl;
-import com.intellij.psi.tree.IElementType;
-import consulo.psi.tree.ElementTypeAsPsiFactory;
-
+import consulo.twig.psi.impl.*;
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
 public interface TwigElements
 {
-	IElementType OPEN_TAG = new ElementTypeAsPsiFactory("OPEN_TAG", TwigLanguage.INSTANCE, TwigTagImpl.class);
+	IElementType OPEN_TAG = new ElementTypeAsPsiFactory("OPEN_TAG", TwigLanguage.INSTANCE, TwigTagImpl::new);
 
-	IElementType CLOSE_TAG = new ElementTypeAsPsiFactory("CLOSE_TAG", TwigLanguage.INSTANCE, TwigTagImpl.class);
+	IElementType CLOSE_TAG = new ElementTypeAsPsiFactory("CLOSE_TAG", TwigLanguage.INSTANCE, TwigTagImpl::new);
 
-	IElementType BLOCK = new ElementTypeAsPsiFactory("BLOCK", TwigLanguage.INSTANCE, TwigBlockImpl.class);
+	IElementType BLOCK = new ElementTypeAsPsiFactory("BLOCK", TwigLanguage.INSTANCE, TwigBlockImpl::new);
 
-	IElementType EXPRESSION_BODY = new ElementTypeAsPsiFactory("EXPRESSION_BODY", TwigLanguage.INSTANCE, TwigExpressionBodyImpl.class);
+	IElementType EXPRESSION_BODY = new ElementTypeAsPsiFactory("EXPRESSION_BODY", TwigLanguage.INSTANCE, TwigExpressionBodyImpl::new);
 
-	IElementType CONSTANT_EXPRESSION = new ElementTypeAsPsiFactory("CONSTANT_EXPRESSION", TwigLanguage.INSTANCE, TwigConstantExpressionImpl.class);
+	IElementType CONSTANT_EXPRESSION = new ElementTypeAsPsiFactory("CONSTANT_EXPRESSION", TwigLanguage.INSTANCE, TwigConstantExpressionImpl::new);
 
-	IElementType REFERENCE_EXPRESSION = new ElementTypeAsPsiFactory("REFERENCE_EXPRESSION", TwigLanguage.INSTANCE, TwigReferenceExpressionImpl.class);
+	IElementType REFERENCE_EXPRESSION = new ElementTypeAsPsiFactory("REFERENCE_EXPRESSION", TwigLanguage.INSTANCE, TwigReferenceExpressionImpl::new);
 
-	IElementType BINARY_EXPRESSION = new ElementTypeAsPsiFactory("BINARY_EXPRESSION", TwigLanguage.INSTANCE, TwigBinaryExpressionImpl.class);
+	IElementType BINARY_EXPRESSION = new ElementTypeAsPsiFactory("BINARY_EXPRESSION", TwigLanguage.INSTANCE, TwigBinaryExpressionImpl::new);
 }

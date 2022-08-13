@@ -16,10 +16,10 @@
 
 package consulo.twig.psi;
 
-import javax.annotation.Nonnull;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiElement;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL

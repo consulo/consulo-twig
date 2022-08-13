@@ -16,19 +16,21 @@
 
 package consulo.twig.psi;
 
-import java.util.List;
+import consulo.annotation.component.ComponentScope;
+import consulo.annotation.component.ExtensionAPI;
+import consulo.component.extension.ExtensionPointName;
 
 import javax.annotation.Nonnull;
-
-import com.intellij.openapi.extensions.ExtensionPointName;
+import java.util.List;
 
 /**
  * @author VISTALL
  * @since 05.11.13.
  */
+@ExtensionAPI(ComponentScope.APPLICATION)
 public interface TwigVariableProvider
 {
-	ExtensionPointName<TwigVariableProvider> EP_NAME = ExtensionPointName.create("consulo.twig.variableProvider");
+	ExtensionPointName<TwigVariableProvider> EP_NAME = ExtensionPointName.create(TwigVariableProvider.class);
 
 	@Nonnull
 	List<TwigVariable> getVariables(@Nonnull TwigFile twigFile);

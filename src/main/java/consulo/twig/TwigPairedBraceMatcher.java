@@ -16,17 +16,18 @@
 
 package consulo.twig;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.BracePair;
+import consulo.language.Language;
+import consulo.language.PairedBraceMatcher;
+
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import com.intellij.lang.BracePair;
-import com.intellij.lang.PairedBraceMatcher;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IElementType;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
+@ExtensionImpl
 public class TwigPairedBraceMatcher implements PairedBraceMatcher
 {
 	private static final BracePair[] ourPairs = new BracePair[]
@@ -41,15 +42,10 @@ public class TwigPairedBraceMatcher implements PairedBraceMatcher
 		return ourPairs;
 	}
 
+	@Nonnull
 	@Override
-	public boolean isPairedBracesAllowedBeforeType(@Nonnull IElementType elementType, @Nullable IElementType elementType2)
+	public Language getLanguage()
 	{
-		return false;
-	}
-
-	@Override
-	public int getCodeConstructStart(PsiFile psiFile, int i)
-	{
-		return i;
+		return TwigLanguage.INSTANCE;
 	}
 }
