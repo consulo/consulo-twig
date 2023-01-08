@@ -16,13 +16,13 @@
 
 package consulo.twig.psi.impl;
 
-import javax.annotation.Nonnull;
-
+import consulo.language.ast.ASTNode;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
+import consulo.language.psi.PsiElementVisitor;
 import consulo.twig.psi.TwigElement;
 import consulo.twig.psi.TwigVisitor;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElementVisitor;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL

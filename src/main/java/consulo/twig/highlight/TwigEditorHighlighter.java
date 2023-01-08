@@ -16,22 +16,22 @@
 
 package consulo.twig.highlight;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import consulo.colorScheme.EditorColorsScheme;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.highlight.LayerDescriptor;
+import consulo.language.editor.highlight.LayeredLexerEditorHighlighter;
+import consulo.language.editor.highlight.SyntaxHighlighter;
+import consulo.language.lexer.Lexer;
+import consulo.language.plain.PlainTextFileType;
+import consulo.project.Project;
 import consulo.twig.TwigFileViewProvider;
 import consulo.twig.psi.TwigTokens;
-import com.intellij.lexer.Lexer;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.editor.ex.util.LayerDescriptor;
-import com.intellij.openapi.editor.ex.util.LayeredLexerEditorHighlighter;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.fileTypes.PlainTextFileType;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.tree.IElementType;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.fileType.FileType;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 /**
  * @author VISTALL
  * @since 02.11.13.

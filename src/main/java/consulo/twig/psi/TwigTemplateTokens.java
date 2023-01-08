@@ -16,10 +16,9 @@
 
 package consulo.twig.psi;
 
+import consulo.language.ast.IElementType;
+import consulo.language.impl.psi.template.TemplateDataElementType;
 import consulo.twig.TwigLanguage;
-import com.intellij.psi.templateLanguages.TemplateDataElementType;
-import com.intellij.psi.tree.IElementType;
-
 /**
  * @author VISTALL
  * @since 02.11.13.

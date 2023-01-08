@@ -16,17 +16,17 @@
 
 package consulo.twig.highlight;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Nonnull;
+import consulo.codeEditor.HighlighterColors;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.highlight.SyntaxHighlighterBase;
+import consulo.language.lexer.Lexer;
 import consulo.twig.lexer.TwigLexer;
 import consulo.twig.psi.TwigTokens;
-import com.intellij.lexer.Lexer;
-import com.intellij.openapi.editor.HighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
-import com.intellij.psi.tree.IElementType;
+
+import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author VISTALL
@@ -34,18 +34,18 @@ import com.intellij.psi.tree.IElementType;
  */
 public class TwigSyntaxHighlighter extends SyntaxHighlighterBase
 {
-	private static Map<IElementType, TextAttributesKey> ourMap = new HashMap<IElementType, TextAttributesKey>()
+	private static Map<IElementType, TextAttributesKey> ourMap = new HashMap<IElementType, TextAttributesKey>();
+
+	static
 	{
-		{
-			put(TwigTokens.COMMENT, TwigSyntaxHighlighterKeys.COMMENT);
-			put(TwigTokens.BLOCK_NAME, TwigSyntaxHighlighterKeys.KEYWORD);
-			put(TwigTokens.IS_KEYWORD, TwigSyntaxHighlighterKeys.KEYWORD);
-			put(TwigTokens.IN_KEYWORD, TwigSyntaxHighlighterKeys.KEYWORD);
-			put(TwigTokens.BAD_CHARACTER, HighlighterColors.BAD_CHARACTER);
-			put(TwigTokens.STRING, TwigSyntaxHighlighterKeys.STRING);
-			put(TwigTokens.DSTRING, TwigSyntaxHighlighterKeys.STRING);
-		}
-	};
+		ourMap.put(TwigTokens.COMMENT, TwigSyntaxHighlighterKeys.COMMENT);
+		ourMap.put(TwigTokens.BLOCK_NAME, TwigSyntaxHighlighterKeys.KEYWORD);
+		ourMap.put(TwigTokens.IS_KEYWORD, TwigSyntaxHighlighterKeys.KEYWORD);
+		ourMap.put(TwigTokens.IN_KEYWORD, TwigSyntaxHighlighterKeys.KEYWORD);
+		ourMap.put(TwigTokens.BAD_CHARACTER, HighlighterColors.BAD_CHARACTER);
+		ourMap.put(TwigTokens.STRING, TwigSyntaxHighlighterKeys.STRING);
+		ourMap.put(TwigTokens.DSTRING, TwigSyntaxHighlighterKeys.STRING);
+	}
 
 	@Nonnull
 	@Override

@@ -16,16 +16,15 @@
 
 package consulo.twig.completion;
 
-import com.intellij.codeInsight.completion.CompletionContributor;
-import com.intellij.codeInsight.completion.CompletionParameters;
-import com.intellij.codeInsight.completion.CompletionResultSet;
-import com.intellij.codeInsight.completion.CompletionType;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.patterns.StandardPatterns;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.ProcessingContext;
 import consulo.annotation.access.RequiredReadAction;
-import consulo.codeInsight.completion.CompletionProvider;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.completion.*;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.pattern.StandardPatterns;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.ProcessingContext;
+import consulo.twig.TwigLanguage;
 import consulo.twig.psi.TwigBlock;
 import consulo.twig.psi.TwigElements;
 import consulo.twig.psi.TwigTokens;
@@ -38,6 +37,7 @@ import javax.annotation.Nonnull;
  * @author VISTALL
  * @since 02.11.13.
  */
+@ExtensionImpl
 public class TwigCompletionProvider extends CompletionContributor
 {
 	public TwigCompletionProvider()
@@ -62,5 +62,12 @@ public class TwigCompletionProvider extends CompletionContributor
 				}
 			}
 		});
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return TwigLanguage.INSTANCE;
 	}
 }

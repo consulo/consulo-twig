@@ -16,30 +16,28 @@
 
 package consulo.twig;
 
-import java.util.Set;
+import consulo.language.Language;
+import consulo.language.file.FileTypeManager;
+import consulo.language.file.LanguageFileType;
+import consulo.language.impl.file.MultiplePsiFilesPerDocumentFileViewProvider;
+import consulo.language.impl.psi.PsiFileImpl;
+import consulo.language.parser.ParserDefinition;
+import consulo.language.plain.PlainTextLanguage;
+import consulo.language.psi.LanguageSubstitutors;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiManager;
+import consulo.language.template.TemplateDataLanguageMappings;
+import consulo.language.template.TemplateLanguage;
+import consulo.language.template.TemplateLanguageFileViewProvider;
+import consulo.project.Project;
+import consulo.twig.psi.TwigTemplateTokens;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.fileType.FileType;
+import consulo.xml.lang.html.HTMLLanguage;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.lang.Language;
-import com.intellij.lang.LanguageParserDefinitions;
-import com.intellij.lang.html.HTMLLanguage;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.openapi.fileTypes.LanguageFileType;
-import com.intellij.openapi.fileTypes.PlainTextLanguage;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.LanguageSubstitutors;
-import com.intellij.psi.MultiplePsiFilesPerDocumentFileViewProvider;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.impl.source.PsiFileImpl;
-import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
-import com.intellij.psi.templateLanguages.TemplateLanguage;
-import com.intellij.psi.templateLanguages.TemplateLanguageFileViewProvider;
-import com.intellij.util.containers.ContainerUtil;
-import consulo.twig.psi.TwigTemplateTokens;
+import java.util.Set;
 
 /**
  * @author VISTALL
@@ -53,7 +51,7 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 	{
 		super(manager, virtualFile, physical);
 		final Language language = getTemplateDataLanguage(virtualFile, manager.getProject());
-		myTemplateDataLanguage = language instanceof TemplateLanguage ? PlainTextLanguage.INSTANCE : LanguageSubstitutors.INSTANCE.substituteLanguage(language, virtualFile, manager.getProject());
+		myTemplateDataLanguage = language instanceof TemplateLanguage ? PlainTextLanguage.INSTANCE : LanguageSubstitutors.substituteLanguage(language, virtualFile, manager.getProject());
 	}
 
 	public TwigFileViewProvider(final PsiManager manager, final VirtualFile virtualFile, final boolean physical, final Language templateDataLanguage)
@@ -103,7 +101,7 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 	@Override
 	public Set<Language> getLanguages()
 	{
-		return ContainerUtil.newHashSet(TwigLanguage.INSTANCE, getTemplateDataLanguage());
+		return Set.of(TwigLanguage.INSTANCE, getTemplateDataLanguage());
 	}
 
 	@Nullable
@@ -125,7 +123,7 @@ public class TwigFileViewProvider extends MultiplePsiFilesPerDocumentFileViewPro
 
 	private PsiFile createFileInner(Language lang)
 	{
-		return LanguageParserDefinitions.INSTANCE.forLanguage(lang).createFile(this);
+		return ParserDefinition.forLanguage(lang).createFile(this);
 	}
 
 	@Override

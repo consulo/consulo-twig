@@ -16,15 +16,10 @@
 
 package consulo.twig.psi;
 
+import consulo.language.ast.ElementTypeAsPsiFactory;
+import consulo.language.ast.IElementType;
 import consulo.twig.TwigLanguage;
-import consulo.twig.psi.impl.TwigBinaryExpressionImpl;
-import consulo.twig.psi.impl.TwigBlockImpl;
-import consulo.twig.psi.impl.TwigConstantExpressionImpl;
-import consulo.twig.psi.impl.TwigExpressionBodyImpl;
-import consulo.twig.psi.impl.TwigReferenceExpressionImpl;
-import consulo.twig.psi.impl.TwigTagImpl;
-import com.intellij.psi.tree.IElementType;
-import consulo.psi.tree.ElementTypeAsPsiFactory;
+import consulo.twig.psi.impl.*;
 
 /**
  * @author VISTALL

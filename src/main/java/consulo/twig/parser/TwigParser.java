@@ -16,21 +16,21 @@
 
 package consulo.twig.parser;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.PsiParser;
+import consulo.language.version.LanguageVersion;
+import consulo.twig.psi.TwigElements;
+import consulo.twig.psi.TwigTokens;
+import consulo.util.lang.Pair;
+import consulo.util.lang.StringUtil;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import consulo.twig.psi.TwigElements;
-import consulo.twig.psi.TwigTokens;
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiParser;
-import com.intellij.openapi.util.Pair;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.tree.IElementType;
-import consulo.lang.LanguageVersion;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
 
 /**
  * @author VISTALL

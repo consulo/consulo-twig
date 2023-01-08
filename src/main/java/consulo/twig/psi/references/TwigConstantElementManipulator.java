@@ -16,15 +16,19 @@
 
 package consulo.twig.psi.references;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.document.util.TextRange;
+import consulo.language.psi.AbstractElementManipulator;
+import consulo.language.util.IncorrectOperationException;
 import consulo.twig.psi.TwigConstantExpression;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.AbstractElementManipulator;
-import com.intellij.util.IncorrectOperationException;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 05.11.13.
  */
+@ExtensionImpl
 public class TwigConstantElementManipulator extends AbstractElementManipulator<TwigConstantExpression>
 {
 	@Override
@@ -43,6 +47,13 @@ public class TwigConstantElementManipulator extends AbstractElementManipulator<T
 			end -= 1;
 		}
 		return new TextRange(start, end);
+	}
+
+	@Nonnull
+	@Override
+	public Class<TwigConstantExpression> getElementClass()
+	{
+		return TwigConstantExpression.class;
 	}
 
 	@Override

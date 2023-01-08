@@ -16,20 +16,31 @@
 
 package consulo.twig.psi.references;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.document.util.TextRange;
+import consulo.language.psi.AbstractElementManipulator;
+import consulo.language.util.IncorrectOperationException;
 import consulo.twig.psi.TwigReferenceExpression;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.AbstractElementManipulator;
-import com.intellij.util.IncorrectOperationException;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 05.11.13.
  */
+@ExtensionImpl
 public class TwigReferenceElementManipulator extends AbstractElementManipulator<TwigReferenceExpression>
 {
 	@Override
 	public TwigReferenceExpression handleContentChange(TwigReferenceExpression expression, TextRange textRange, String s) throws IncorrectOperationException
 	{
 		return null;
+	}
+
+	@Nonnull
+	@Override
+	public Class<TwigReferenceExpression> getElementClass()
+	{
+		return TwigReferenceExpression.class;
 	}
 }

@@ -16,17 +16,19 @@
 
 package consulo.twig.editor;
 
-import javax.annotation.Nonnull;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.language.editor.action.TypedHandlerDelegate;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
 
-import com.intellij.codeInsight.editorActions.TypedHandlerDelegate;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiFile;
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 05.11.13.
  */
+@ExtensionImpl
 public class TwigTypedHandler extends TypedHandlerDelegate
 {
 	private static char[][] ourInsertChars = new char[][]{

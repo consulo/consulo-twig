@@ -16,9 +16,8 @@
 
 package consulo.twig.highlight;
 
-import consulo.twig.TwigLanguage;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
+import consulo.codeEditor.DefaultLanguageHighlighterColors;
+import consulo.colorScheme.TextAttributesKey;
 
 /**
  * @author VISTALL
@@ -26,11 +25,11 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
  */
 public interface TwigSyntaxHighlighterKeys
 {
-	TextAttributesKey COMMENT = TextAttributesKey.createTextAttributesKey(TwigLanguage.INSTANCE, DefaultLanguageHighlighterColors.BLOCK_COMMENT);
+	TextAttributesKey COMMENT = TextAttributesKey.createTextAttributesKey("TWIG_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
 
-	TextAttributesKey TAG = TextAttributesKey.createTextAttributesKey(TwigLanguage.INSTANCE, DefaultLanguageHighlighterColors.MARKUP_TAG);
+	TextAttributesKey TAG = TextAttributesKey.createTextAttributesKey("TWIG_TAG", DefaultLanguageHighlighterColors.MARKUP_TAG);
 
-	TextAttributesKey KEYWORD = TextAttributesKey.createTextAttributesKey(TwigLanguage.INSTANCE, DefaultLanguageHighlighterColors.KEYWORD);
+	TextAttributesKey KEYWORD = TextAttributesKey.createTextAttributesKey("TWIG_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
 
-	TextAttributesKey STRING = TextAttributesKey.createTextAttributesKey(TwigLanguage.INSTANCE, DefaultLanguageHighlighterColors.STRING);
+	TextAttributesKey STRING = TextAttributesKey.createTextAttributesKey("TWIG_STRING", DefaultLanguageHighlighterColors.STRING);
 }

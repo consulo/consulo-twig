@@ -16,43 +16,33 @@
 
 package consulo.twig.psi.references;
 
-import java.util.ArrayList;
-import java.util.List;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.AllIcons;
+import consulo.language.Language;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.pattern.StandardPatterns;
+import consulo.language.psi.*;
+import consulo.language.psi.path.FileReferenceSet;
+import consulo.language.psi.resolve.BaseScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.util.ProcessingContext;
+import consulo.twig.TwigLanguage;
+import consulo.twig.psi.*;
+import consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
+import consulo.util.collection.ArrayUtil;
+import consulo.util.lang.Comparing;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import consulo.twig.psi.TwigBinaryExpression;
-import consulo.twig.psi.TwigConstantExpression;
-import consulo.twig.psi.TwigElement;
-import consulo.twig.psi.TwigPsiUtil;
-import consulo.twig.psi.TwigReferenceExpression;
-import consulo.twig.psi.TwigTag;
-import consulo.twig.psi.TwigTokens;
-import consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.util.Comparing;
-import com.intellij.patterns.StandardPatterns;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementResolveResult;
-import com.intellij.psi.PsiPolyVariantReferenceBase;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.PsiReferenceContributor;
-import com.intellij.psi.PsiReferenceProvider;
-import com.intellij.psi.PsiReferenceRegistrar;
-import com.intellij.psi.ResolveResult;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.impl.source.resolve.reference.impl.providers.FileReferenceSet;
-import com.intellij.psi.scope.BaseScopeProcessor;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.ArrayUtil;
-import com.intellij.util.ProcessingContext;
-
+import java.util.ArrayList;
+import java.util.List;
 /**
  * @author VISTALL
  * @since 05.11.13.
  */
+@ExtensionImpl
 public class TwigReferenceContributor extends PsiReferenceContributor
 {
 	private static class VariablePsiScopeProcessor extends BaseScopeProcessor
@@ -215,5 +205,12 @@ public class TwigReferenceContributor extends PsiReferenceContributor
 				return new PsiReference[0];
 			}
 		});
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return TwigLanguage.INSTANCE;
 	}
 }

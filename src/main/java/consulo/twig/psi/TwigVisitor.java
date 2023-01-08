@@ -16,7 +16,7 @@
 
 package consulo.twig.psi;
 
-import com.intellij.psi.PsiElementVisitor;
+import consulo.language.psi.PsiElementVisitor;
 
 /**
  * @author VISTALL

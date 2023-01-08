@@ -29,23 +29,4 @@
 		<extensionPoint name="variableProvider" interface="consulo.twig.psi.TwigVariableProvider" />
 	</extensionPoints>
 
-	<extensions defaultExtensionNs="com.intellij">
-		<lang.parserDefinition language="TWIG" implementationClass="consulo.twig.TwigParserDefinition" />
-		<fileTypeFactory implementation="consulo.twig.TwigFileTypeFactory" />
-		<lang.fileViewProviderFactory language="TWIG" implementationClass="consulo.twig.TwigFileViewProviderFactory"/>
-		<completion.contributor language="TWIG" implementationClass="consulo.twig.completion.TwigCompletionProvider" />
-		<lang.syntaxHighlighterFactory language="TWIG" implementationClass="consulo.twig.highlight.TwigSyntaxHighlighterFactory"/>
-		<syntaxHighlighter key="TWIG" implementationClass="consulo.twig.highlight.TwigSyntaxHighlighter"/>
-		<highlightVisitor implementation="consulo.twig.editor.TwigHighlightVisitorImpl" />
-		<lang.braceMatcher language="TWIG" implementationClass="consulo.twig.TwigPairedBraceMatcher" />
-		<lang.foldingBuilder language="TWIG" implementationClass="consulo.twig.TwigFoldingBuilder" />
-
-		<editorHighlighterProvider filetype="TWIG" implementationClass="consulo.twig.TwigEditorHighlighterProvider" />
-		<typedHandler implementation="consulo.twig.editor.TwigTypedHandler" />
-
-		<psi.referenceContributor language="TWIG" implementation="consulo.twig.psi.references.TwigReferenceContributor" />
-
-		<lang.elementManipulator forClass="consulo.twig.psi.TwigReferenceExpression" implementationClass="consulo.twig.psi.references.TwigReferenceElementManipulator" />
-		<lang.elementManipulator forClass="consulo.twig.psi.TwigConstantExpression" implementationClass="consulo.twig.psi.references.TwigConstantElementManipulator" />
-	</extensions>
 </consulo-plugin>
