@@ -24,9 +24,4 @@
 	<tags>
 		<tag>template.language</tag>
 	</tags>
-
-	<extensionPoints>
-		<extensionPoint name="variableProvider" interface="consulo.twig.psi.TwigVariableProvider" />
-	</extensionPoints>
-
 </consulo-plugin>
