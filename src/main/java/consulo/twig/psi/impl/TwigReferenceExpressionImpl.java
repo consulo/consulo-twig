@@ -23,7 +23,6 @@ import consulo.language.psi.ReferenceProvidersRegistry;
 import consulo.language.util.IncorrectOperationException;
 import consulo.twig.psi.TwigReferenceExpression;
 import consulo.twig.psi.TwigVisitor;
-import org.jetbrains.annotations.NonNls;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -66,7 +65,7 @@ public class TwigReferenceExpressionImpl extends TwigExpressionImpl implements T
 	}
 
 	@Override
-	public PsiElement setName(@NonNls @Nonnull String s) throws IncorrectOperationException
+	public PsiElement setName(@Nonnull String s) throws IncorrectOperationException
 	{
 		return null;
 	}

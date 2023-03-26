@@ -16,7 +16,6 @@
 
 package consulo.twig.editor;
 
-import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.rawHighlight.HighlightInfo;
 import consulo.language.editor.rawHighlight.HighlightInfoHolder;
 import consulo.language.editor.rawHighlight.HighlightInfoType;
@@ -38,16 +37,9 @@ import javax.annotation.Nonnull;
  * @author VISTALL
  * @since 02.11.13.
  */
-@ExtensionImpl
 public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVisitor
 {
 	private HighlightInfoHolder myHighlightInfoHolder;
-
-	@Override
-	public boolean suitableForFile(@Nonnull PsiFile psiFile)
-	{
-		return psiFile instanceof TwigFile;
-	}
 
 	@Override
 	public void visit(@Nonnull PsiElement element)
@@ -174,12 +166,5 @@ public class TwigHighlightVisitorImpl extends TwigVisitor implements HighlightVi
 				myHighlightInfoHolder.add(HighlightInfo.newHighlightInfo(HighlightInfoType.ERROR).descriptionAndTooltip("Wrong close tag name").range(closeTag.getNameIdentifier()).create());
 			}
 		}
-	}
-
-	@Nonnull
-	@Override
-	public HighlightVisitor clone()
-	{
-		return new TwigHighlightVisitorImpl();
 	}
 }
