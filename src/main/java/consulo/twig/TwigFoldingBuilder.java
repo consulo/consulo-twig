@@ -29,8 +29,8 @@ import consulo.twig.psi.TwigElements;
 import consulo.twig.psi.TwigTag;
 import consulo.twig.psi.TwigVisitor;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 

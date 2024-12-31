@@ -20,7 +20,7 @@ import consulo.language.ast.ASTNode;
 import consulo.twig.psi.TwigExpressionBody;
 import consulo.twig.psi.TwigVisitor;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author VISTALL

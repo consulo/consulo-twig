@@ -22,7 +22,7 @@ import consulo.language.psi.PsiElementVisitor;
 import consulo.twig.psi.TwigElement;
 import consulo.twig.psi.TwigVisitor;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author VISTALL

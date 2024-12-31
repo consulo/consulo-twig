@@ -34,8 +34,8 @@ import consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
 import consulo.util.collection.ArrayUtil;
 import consulo.util.lang.Comparing;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 /**

@@ -25,7 +25,7 @@ import consulo.twig.psi.TwigBinaryExpression;
 import consulo.twig.psi.TwigTokens;
 import consulo.twig.psi.TwigVisitor;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author VISTALL

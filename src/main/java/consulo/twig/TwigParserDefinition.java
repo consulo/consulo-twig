@@ -34,7 +34,7 @@ import consulo.twig.parser.TwigParser;
 import consulo.twig.psi.TwigFile;
 import consulo.twig.psi.TwigTokens;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author VISTALL

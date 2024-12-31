@@ -31,7 +31,7 @@ import consulo.twig.table.TwigTable;
 import consulo.twig.table.TwigTableBlock;
 import consulo.util.lang.Comparing;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author VISTALL

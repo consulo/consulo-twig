@@ -24,7 +24,7 @@ import consulo.language.lexer.Lexer;
 import consulo.twig.lexer.TwigLexer;
 import consulo.twig.psi.TwigTokens;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 

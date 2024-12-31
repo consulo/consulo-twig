@@ -26,7 +26,7 @@ import consulo.twig.TwigLanguage;
 import consulo.twig.psi.impl.light.LightTwigVariableDeclaration;
 import consulo.virtualFileSystem.fileType.FileType;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.List;
 
 /**
