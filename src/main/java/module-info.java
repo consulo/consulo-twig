@@ -6,7 +6,7 @@ module consulo.twig
 {
 	requires consulo.ide.api;
 
-	requires com.intellij.xml;
+	requires com.intellij.xml.html.api;
 
 	exports consulo.twig;
 	exports consulo.twig.completion;

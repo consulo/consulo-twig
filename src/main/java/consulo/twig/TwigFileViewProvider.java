@@ -16,6 +16,7 @@
 
 package consulo.twig;
 
+import consulo.html.language.HTMLLanguage;
 import consulo.language.Language;
 import consulo.language.file.FileTypeManager;
 import consulo.language.file.LanguageFileType;
@@ -33,7 +34,6 @@ import consulo.project.Project;
 import consulo.twig.psi.TwigTemplateTokens;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.fileType.FileType;
-import consulo.xml.lang.html.HTMLLanguage;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
