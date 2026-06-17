@@ -17,55 +17,54 @@
 package consulo.twig.psi;
 
 import consulo.language.ast.IElementType;
+import consulo.language.ast.StandardTokenTypes;
 import consulo.language.ast.TokenSet;
-import consulo.language.ast.TokenType;
 import consulo.twig.TwigLanguage;
 
 /**
  * @author VISTALL
  * @since 02.11.13.
  */
-public interface TwigTokens extends TokenType
-{
-	IElementType STMT_OPEN = new IElementType("STMT_OPEN", TwigLanguage.INSTANCE);
+public interface TwigTokens extends StandardTokenTypes {
+    IElementType STMT_OPEN = new IElementType("STMT_OPEN", TwigLanguage.INSTANCE);
 
-	IElementType STMT_CLOSE = new IElementType("STMT_CLOSE", TwigLanguage.INSTANCE);
+    IElementType STMT_CLOSE = new IElementType("STMT_CLOSE", TwigLanguage.INSTANCE);
 
-	IElementType VAR_OPEN = new IElementType("VAR_OPEN", TwigLanguage.INSTANCE);
+    IElementType VAR_OPEN = new IElementType("VAR_OPEN", TwigLanguage.INSTANCE);
 
-	IElementType VAR_CLOSE = new IElementType("VAR_CLOSE", TwigLanguage.INSTANCE);
+    IElementType VAR_CLOSE = new IElementType("VAR_CLOSE", TwigLanguage.INSTANCE);
 
-	IElementType COMMA = new IElementType("COMMA", TwigLanguage.INSTANCE);
+    IElementType COMMA = new IElementType("COMMA", TwigLanguage.INSTANCE);
 
-	IElementType COMMENT = new IElementType("COMMENT", TwigLanguage.INSTANCE);
+    IElementType COMMENT = new IElementType("COMMENT", TwigLanguage.INSTANCE);
 
-	IElementType BLOCK_NAME = new IElementType("BLOCK_NAME", TwigLanguage.INSTANCE);
+    IElementType BLOCK_NAME = new IElementType("BLOCK_NAME", TwigLanguage.INSTANCE);
 
-	IElementType IDENTIFIER = new IElementType("IDENTIFIER", TwigLanguage.INSTANCE);
+    IElementType IDENTIFIER = new IElementType("IDENTIFIER", TwigLanguage.INSTANCE);
 
-	IElementType T_INLINE_HTML = new IElementType("T_INLINE_HTML", TwigLanguage.INSTANCE);
+    IElementType T_INLINE_HTML = new IElementType("T_INLINE_HTML", TwigLanguage.INSTANCE);
 
-	IElementType STRING = new IElementType("STRING", TwigLanguage.INSTANCE);
+    IElementType STRING = new IElementType("STRING", TwigLanguage.INSTANCE);
 
-	IElementType DSTRING = new IElementType("DSTRING", TwigLanguage.INSTANCE);
+    IElementType DSTRING = new IElementType("DSTRING", TwigLanguage.INSTANCE);
 
-	IElementType LPAR = new IElementType("LPAR", TwigLanguage.INSTANCE);
+    IElementType LPAR = new IElementType("LPAR", TwigLanguage.INSTANCE);
 
-	IElementType RPAR = new IElementType("RPAR", TwigLanguage.INSTANCE);
+    IElementType RPAR = new IElementType("RPAR", TwigLanguage.INSTANCE);
 
-	IElementType OR = new IElementType("OR", TwigLanguage.INSTANCE);
+    IElementType OR = new IElementType("OR", TwigLanguage.INSTANCE);
 
-	IElementType PERC = new IElementType("PERC", TwigLanguage.INSTANCE);
+    IElementType PERC = new IElementType("PERC", TwigLanguage.INSTANCE);
 
-	IElementType PLUS = new IElementType("PLUS", TwigLanguage.INSTANCE);
+    IElementType PLUS = new IElementType("PLUS", TwigLanguage.INSTANCE);
 
-	IElementType MINUS = new IElementType("MINUS", TwigLanguage.INSTANCE);
+    IElementType MINUS = new IElementType("MINUS", TwigLanguage.INSTANCE);
 
-	IElementType EQ = new IElementType("EQ", TwigLanguage.INSTANCE);
+    IElementType EQ = new IElementType("EQ", TwigLanguage.INSTANCE);
 
-	IElementType IN_KEYWORD = new IElementType("IN_KEYWORD", TwigLanguage.INSTANCE);
+    IElementType IN_KEYWORD = new IElementType("IN_KEYWORD", TwigLanguage.INSTANCE);
 
-	IElementType IS_KEYWORD = new IElementType("IS_KEYWORD", TwigLanguage.INSTANCE);
+    IElementType IS_KEYWORD = new IElementType("IS_KEYWORD", TwigLanguage.INSTANCE);
 
-	TokenSet BINARY_TOKENS = TokenSet.create(IN_KEYWORD, IS_KEYWORD, OR, EQ, PERC, PLUS, MINUS);
+    TokenSet BINARY_TOKENS = TokenSet.create(IN_KEYWORD, IS_KEYWORD, OR, EQ, PERC, PLUS, MINUS);
 }
