@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 consulo.io
+ * Copyright 2013-2026 consulo.io
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,36 +16,35 @@
 
 package consulo.twig;
 
+import com.jetbrains.twig.TwigLanguage;
+import com.jetbrains.twig.TwigTokenTypes;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.BracePair;
 import consulo.language.Language;
 import consulo.language.PairedBraceMatcher;
 
-import jakarta.annotation.Nonnull;
-
 /**
  * @author VISTALL
- * @since 02.11.13.
+ * @since 2013-11-02
  */
 @ExtensionImpl
-public class TwigPairedBraceMatcher implements PairedBraceMatcher
-{
-	private static final BracePair[] ourPairs = new BracePair[]
-	{
-	//	new BracePair(TwigTokens.STMT_OPEN, TwigTokens.STMT_CLOSE, false),
-	//	new BracePair(TwigTokens.VAR_OPEN, TwigTokens.VAR_CLOSE, false)
-	};
+public class TwigPairedBraceMatcher implements PairedBraceMatcher {
+    private static final BracePair[] PAIRS = new BracePair[]{
+        new BracePair(TwigTokenTypes.STATEMENT_BLOCK_START, TwigTokenTypes.STATEMENT_BLOCK_END, true),
+        new BracePair(TwigTokenTypes.PRINT_BLOCK_START, TwigTokenTypes.PRINT_BLOCK_END, true),
+        new BracePair(TwigTokenTypes.COMMENT_START, TwigTokenTypes.COMMENT_END, true),
+        new BracePair(TwigTokenTypes.LBRACE, TwigTokenTypes.RBRACE, false),
+        new BracePair(TwigTokenTypes.LBRACE_SQ, TwigTokenTypes.RBRACE_SQ, false),
+        new BracePair(TwigTokenTypes.LBRACE_CURL, TwigTokenTypes.RBRACE_CURL, false)
+    };
 
-	@Override
-	public BracePair[] getPairs()
-	{
-		return ourPairs;
-	}
+    @Override
+    public BracePair[] getPairs() {
+        return PAIRS;
+    }
 
-	@Nonnull
-	@Override
-	public Language getLanguage()
-	{
-		return TwigLanguage.INSTANCE;
-	}
+    @Override
+    public Language getLanguage() {
+        return TwigLanguage.INSTANCE;
+    }
 }

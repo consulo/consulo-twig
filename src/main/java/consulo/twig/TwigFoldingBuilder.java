@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2016 consulo.io
+ * Copyright 2013-2026 consulo.io
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,85 +16,73 @@
 
 package consulo.twig;
 
+import com.jetbrains.twig.TwigLanguage;
+import com.jetbrains.twig.elements.TwigComment;
+import com.jetbrains.twig.elements.TwigElementTypes;
+import com.jetbrains.twig.elements.TwigStatement;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.document.Document;
+import consulo.document.util.TextRange;
 import consulo.language.Language;
 import consulo.language.ast.ASTNode;
-import consulo.language.ast.IElementType;
-import consulo.language.editor.folding.FoldingBuilder;
+import consulo.language.editor.folding.FoldingBuilderEx;
 import consulo.language.editor.folding.FoldingDescriptor;
 import consulo.language.psi.PsiElement;
-import consulo.twig.psi.TwigBlock;
-import consulo.twig.psi.TwigElements;
-import consulo.twig.psi.TwigTag;
-import consulo.twig.psi.TwigVisitor;
+import consulo.language.psi.util.PsiTreeUtil;
+import org.jspecify.annotations.Nullable;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Folds statements with an end tag and multi-line comments
+ *
  * @author VISTALL
- * @since 02.11.13.
+ * @since 2013-11-02
  */
 @ExtensionImpl
-public class TwigFoldingBuilder implements FoldingBuilder
-{
-	@Nonnull
-	@Override
-	public FoldingDescriptor[] buildFoldRegions(@Nonnull ASTNode astNode, @Nonnull Document document)
-	{
-		final List<FoldingDescriptor> list = new ArrayList<FoldingDescriptor>();
-		PsiElement psi = astNode.getPsi();
-		psi.accept(new TwigVisitor()
-		{
-			@Override
-			public void visitElement(PsiElement element)
-			{
-				element.acceptChildren(this);
-			}
+public class TwigFoldingBuilder extends FoldingBuilderEx {
+    @RequiredReadAction
+    @Override
+    public FoldingDescriptor[] buildFoldRegions(PsiElement root, Document document, boolean quick) {
+        List<FoldingDescriptor> descriptors = new ArrayList<>();
+        for (TwigStatement statement : PsiTreeUtil.findChildrenOfType(root, TwigStatement.class)) {
+            PsiElement last = statement.getLastChild();
+            if (statement.getFirstChild() != last && last != null && last.getNode().getElementType() == TwigElementTypes.TAG && isMultiLine(document, statement)) {
+                descriptors.add(new FoldingDescriptor(statement.getNode(), statement.getTextRange()));
+            }
+        }
+        for (TwigComment comment : PsiTreeUtil.findChildrenOfType(root, TwigComment.class)) {
+            if (isMultiLine(document, comment)) {
+                descriptors.add(new FoldingDescriptor(comment.getNode(), comment.getTextRange()));
+            }
+        }
+        return descriptors.toArray(FoldingDescriptor.EMPTY);
+    }
 
-			@Override
-			public void visitBlock(TwigBlock block)
-			{
-				super.visitBlock(block);
+    private static boolean isMultiLine(Document document, PsiElement element) {
+        TextRange range = element.getTextRange();
+        return document.getLineNumber(range.getStartOffset()) < document.getLineNumber(range.getEndOffset());
+    }
 
-				TwigTag openTag = block.getOpenTag();
-				String name = openTag.getName();
-				if(name != null && block.getCloseTag() != null)
-				{
-					list.add(new FoldingDescriptor(block, block.getTextRange()));
-				}
-			}
-		});
-		return list.toArray(new FoldingDescriptor[list.size()]);
-	}
+    @RequiredReadAction
+    @Override
+    public @Nullable String getPlaceholderText(ASTNode node) {
+        if (node.getElementType() == TwigElementTypes.COMMENT) {
+            return "{# ... #}";
+        }
+        ASTNode tag = node.getFirstChildNode();
+        return tag == null ? "..." : tag.getText() + "...";
+    }
 
-	@Nullable
-	@Override
-	public String getPlaceholderText(@Nonnull ASTNode astNode)
-	{
-		PsiElement psi = astNode.getPsi();
-		IElementType elementType = astNode.getElementType();
-		if(elementType == TwigElements.BLOCK)
-		{
-			TwigBlock block = (TwigBlock) psi;
-			return "{% " + block.getOpenTag().getName() + " %}";
-		}
-		return null;
-	}
+    @Override
+    public boolean isCollapsedByDefault(ASTNode node) {
+        return false;
+    }
 
-	@Override
-	public boolean isCollapsedByDefault(@Nonnull ASTNode astNode)
-	{
-		return false;
-	}
-
-	@Nonnull
-	@Override
-	public Language getLanguage()
-	{
-		return TwigLanguage.INSTANCE;
-	}
+    @Override
+    public Language getLanguage() {
+        return TwigLanguage.INSTANCE;
+    }
 }

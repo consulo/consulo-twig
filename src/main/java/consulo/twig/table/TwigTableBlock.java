@@ -16,6 +16,7 @@
 
 package consulo.twig.table;
 
+import jakarta.annotation.Nullable;
 /**
  * @author VISTALL
  * @since 05.11.13.
@@ -34,6 +35,7 @@ public class TwigTableBlock
 			myTag = tag;
 		}
 
+		@Nullable
 		public static TwigBlockType byTab(String tag)
 		{
 			for(TwigBlockType twigBlockType : values())

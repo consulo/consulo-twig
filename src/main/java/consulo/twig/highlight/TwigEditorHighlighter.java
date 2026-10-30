@@ -25,8 +25,9 @@ import consulo.language.editor.highlight.SyntaxHighlighter;
 import consulo.language.lexer.Lexer;
 import consulo.language.plain.PlainTextFileType;
 import consulo.project.Project;
-import consulo.twig.TwigFileViewProvider;
-import consulo.twig.psi.TwigTokens;
+import com.jetbrains.twig.TwigFileViewProvider;
+import com.jetbrains.twig.TwigHighlighter;
+import com.jetbrains.twig.TwigTokenTypes;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.fileType.FileType;
 
@@ -41,9 +42,9 @@ public class TwigEditorHighlighter extends LayeredLexerEditorHighlighter
 
 	public TwigEditorHighlighter(@Nullable final Project project, @Nullable final VirtualFile virtualFile, @Nonnull final EditorColorsScheme colors)
 	{
-		super(new TwigSyntaxHighlighter(), colors);
+		super(new TwigHighlighter.TwigFileHighlighter(project), colors);
 		final SyntaxHighlighter highlighter = getTemplateDataLanguageHighlighter(project, virtualFile);
-		registerLayer(TwigTokens.T_INLINE_HTML, new LayerDescriptor(new SyntaxHighlighter()
+		registerLayer(TwigTokenTypes.TEXT, new LayerDescriptor(new SyntaxHighlighter()
 		{
 			@Nonnull
 			public Lexer getHighlightingLexer()
@@ -60,7 +61,7 @@ public class TwigEditorHighlighter extends LayeredLexerEditorHighlighter
 	}
 
 	@Nonnull
-	private static SyntaxHighlighter getTemplateDataLanguageHighlighter(final Project project, final VirtualFile virtualFile)
+	private static SyntaxHighlighter getTemplateDataLanguageHighlighter(@Nullable Project project, @Nullable VirtualFile virtualFile)
 	{
 		FileType type = project == null || virtualFile == null ? null : TwigFileViewProvider.getTemplateDataLanguage(virtualFile, project).getAssociatedFileType();
 		FileType fileType = type == null ? PlainTextFileType.INSTANCE : type;

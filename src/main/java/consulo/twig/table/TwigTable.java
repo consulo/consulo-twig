@@ -16,6 +16,7 @@
 
 package consulo.twig.table;
 
+import jakarta.annotation.Nullable;
 import consulo.logging.Logger;
 import consulo.util.jdom.JDOMUtil;
 import org.jdom.Document;
@@ -78,6 +79,7 @@ public class TwigTable
 		}
 	}
 
+	@Nullable
 	public TwigTableBlock getBlock(String name)
 	{
 		return myBlocks.get(name);

@@ -16,6 +16,8 @@
 
 package consulo.twig;
 
+import com.jetbrains.twig.TwigLanguage;
+import com.jetbrains.twig.TwigFileViewProvider;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.file.FileViewProvider;

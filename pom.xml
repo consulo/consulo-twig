@@ -61,6 +61,7 @@
 						<phase>generate-sources</phase>
 						<goals>
 							<goal>generate-localize</goal>
+							<goal>generate-icon</goal>
 						</goals>
 					</execution>
 					<execution>
@@ -76,6 +77,25 @@
 	</build>
 
 	<dependencies>
+		<!-- first: the light test plugin manager must win over the container one -->
+		<dependency>
+			<groupId>consulo</groupId>
+			<artifactId>consulo-test-junit-impl</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- the HTML implementation for the template data of the tests -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>com.intellij.xml</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<!-- platform -->
 		<dependency>
 			<groupId>consulo</groupId>

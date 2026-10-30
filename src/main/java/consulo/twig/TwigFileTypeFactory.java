@@ -16,6 +16,7 @@
 
 package consulo.twig;
 
+import com.jetbrains.twig.TwigFileType;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.virtualFileSystem.fileType.FileTypeConsumer;
 import consulo.virtualFileSystem.fileType.FileTypeFactory;

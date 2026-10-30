@@ -1,5 +1,6 @@
 package consulo.twig;
 
+import com.jetbrains.twig.TwigFileType;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.codeEditor.EditorHighlighter;
 import consulo.colorScheme.EditorColorsScheme;
