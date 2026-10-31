@@ -268,8 +268,7 @@ public class TwigParserTest {
     public void testHtmlLayerHasNoErrors(Context context) {
         PsiFile file = parse(context, "<div>\n<a href=\"{{ path('app_about') }}\">About</a>\n{% if a %}<b>x</b>{% endif %}\n</div>");
         PsiFile html = file.getViewProvider().getPsi(consulo.html.language.HTMLLanguage.INSTANCE);
-        Assertions.assertNotNull(html, file.getViewProvider().getClass() + " " + file.getViewProvider().getLanguages()
-            + " parserDefinition=" + consulo.language.parser.ParserDefinition.forLanguage(consulo.html.language.HTMLLanguage.INSTANCE));
+        Assertions.assertNotNull(html);
         List<String> errors = PsiTreeUtil.findChildrenOfType(html, consulo.language.psi.PsiErrorElement.class).stream()
             .map(error -> error.getErrorDescription() + " at " + error.getTextOffset() + " '" + error.getParent().getText() + "'")
             .toList();
